@@ -1,0 +1,216 @@
+.outer-container{
+    background-color:rgb(255, 255, 255); 
+    padding:0px 1rem 0px 1rem ;
+    /* border-bottom: 1px solid rgb(128, 128, 128); */
+    border-radius: 10px;
+    width: 100%;
+    /* position: fixed;
+    z-index: 2; */
+}
+
+.inner-container{
+    display: flex;
+    justify-content: space-between !important;
+    align-items: center;
+}
+
+
+.logo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-outerNav{
+    width: 60px;
+    height: 60px;
+}
+
+.navbar-logo{
+    color: rgb(128, 128, 128);
+    font-weight: bold;
+    font-size: 25px;
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: 10px;
+    letter-spacing: 2px;
+    margin-top: 8px;
+}
+
+.span1{
+    color: rgb(136,138,255);
+}
+
+
+
+.login-btn{
+    background: none;
+    border: 2px solid rgb(128, 128, 128);
+    border-radius: 20px;
+    color: rgb(128, 128, 128);
+    font-size: 18px ;
+    font-weight: 500;
+    padding: 5px 30px ;
+    word-spacing: 5px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    transition: 0.5s;
+    text-decoration: none;
+    /* font-family: 'Courier New', Courier, monospace; */
+}
+
+.login-btn:hover{
+    background-color: rgb(136,138,255) !important;
+    border-color: rgb(136,138,255);
+    color: #fff;
+    transition: 0.5s !important;
+}
+
+.rigester-btn{
+    background-color: rgb(136,138,255);
+    border: 2px solid rgb(136,138,255);
+    border-radius: 30px;
+    color: #fff;
+    font-size: 18px ;
+    font-weight: 500;
+    padding: 5px 30px ;
+    word-spacing: 5px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    transition: 0.5s;
+    text-decoration: none;
+    /* font-family: ; */
+}
+
+.rigester-btn:hover{
+    background-color: #fff !important;
+    color: rgb(136,138,255);
+    transition: 0.5s !important;
+}
+
+
+.buttons-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width:900px){
+    .inner-container{
+        display: block;
+    }
+    .buttons-container{
+        margin: 1rem 0px;
+    }
+} 
+
+
+.outer-search-container{
+    z-index: 3;
+    background-image: url('../wallpaper3-100.jpg'); 
+    background-size: cover;
+    background-position: left center; 
+    background-repeat: no-repeat;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px); 
+    background: rgba(255, 255, 255, 0.2); 
+    width: 25rem;
+    display: flex;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.button-search{
+    position: absolute;
+    border: none;
+    border-radius: 10px;
+    background: none;
+    padding-top: 2px;
+}
+
+.input-search{
+    padding: 3px 30px ;
+    width: 100%;
+    border: 2px solid rgb(128, 128, 128);
+    color: rgb(136,138,255);
+    border-radius: 10px;
+    border: none;
+}
+
+ .top_par_search_container{
+    background-color: rgb(136,138,255) !important;
+ }
+
+  .search_page_button{
+    color: rgb(136,138,255) !important;
+    border: 2px solid rgb(136,138,255) !important;
+    border-radius: 10px !important;
+    padding: 0.5rem 2rem !important;
+  }
+
+  .input-search:focus  {
+    outline: none;
+}
+  .icon_search{
+    margin-left: 0.5rem !important;
+    color: rgb(136,138,255) !important;
+  }
+
+  .lable-create-course{
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: cursive ;
+    margin-bottom: 5px;
+    color:rgb(53, 48, 48);
+  }
+
+
+  .input-create-course{
+    color: rgb(53, 48, 48);
+    font-size: 14px;
+    width:100%;
+    border: 2px solid #d9d9d9 ;
+    background-color:#fff;
+    border-radius: 10px;
+    padding: 9px;
+    display: flex ;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
+  }
+  .input-create-course:hover {
+      border-color: #a8a8ff;
+    }
+  
+    .input-create-course:focus {
+      border-color: #a8a8ff;
+      box-shadow: 0 0 0 2px rgb(24 144 255 / 0.2);
+      outline: none;
+    }
+
+    .search_fillter_container{
+        height: 88vh;
+    }
+
+
+    .search_courses_h2{
+        font-size: 23px;
+        color: #a8a8ff;
+        font-style: italic;
+        margin-top: 1rem;
+    }
+
+
+    .container_empty_search{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .empty_search_icon{
+        font-size: 20rem !important;
+        /* color: #a8a8ff; */
+    }

@@ -1,0 +1,77 @@
+.profile-page {
+    min-height: 100vh;
+    background-color: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .profile-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 16px;
+    border: 2px solid #a8a8ff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-username {
+    font-size: 24px;
+    margin: 10px 0;
+    color: #111827;
+  }
+  
+  .profile-email {
+    color: #6b7280;
+    margin-bottom: 20px;
+  }
+  
+  .profile-info {
+    text-align: left;
+    margin-bottom: 30px;
+    color: #374151;
+  }
+  
+  .profile-info div {
+    margin-bottom: 10px;
+  }
+  
+  
+  .go_back_button{
+    /* background: none; */
+    border: 3px solid #a8a8ff;
+    border-radius: 50%;
+    padding: 0.5rem;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #fff;
+    transition: 0.3s;
+  }
+
+  .go_back_icon{
+    color: #a8a8ff !important;
+    transition: 0.3s !important;
+  }
+
+  .go_back_button:hover{
+    background-color: #a8a8ff;
+    transition: 0.3s;
+  }
+
+  .go_back_button:hover .go_back_icon{
+    color: #fff !important;
+    transition: 0.3s !important;
+  }
