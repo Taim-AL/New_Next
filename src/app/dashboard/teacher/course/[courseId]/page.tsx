@@ -11,7 +11,7 @@ import Axios from "@/app/lib/axios";
 import { useEffect, useState } from "react";
 import IntegrationNotistack from "@/app/ui/Alert";
 import { useParams } from "next/navigation";
-import { AttachmentType, BaseUrl, InnerCourseType, VideoOrQuiz } from "@/app/lib/definitions";
+import { AttachmentType, InnerCourseType, VideoOrQuiz } from "@/app/lib/definitions";
 import Link from "next/link";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import AttachmentCard from "@/app/ui/Teacher/AttachmentCard";
@@ -45,6 +45,7 @@ export default  function  CoursePage() {
             setIsPending(false)
             if( response.data.success === true){
               setMessage(response.data.message)
+              setRefresh(!refresh)
             }else{
               setError(response.data.message)
             }
@@ -79,11 +80,11 @@ export default  function  CoursePage() {
         <Row className="outer-container-course mx-0">
             <Col lg="6" md="12"  xs="12" className="p-2">
               <div className="inner-container-course shadow">
-                {image ?<Image alt="image" className='inner-course-image'width={100} height={15} priority={true} src={BaseUrl+image} />:""}
+                {image ?<Image alt="image" className='inner-course-image'width={100} height={15} priority={true} src={image} />:""}
                 {/* <button title='edit-sp' className="edit-button" >
                     <AutoFixHighIcon className="edit-icon" />
                 </button> */}
-                <UpdateCourse courseid={courseId} refresh={refresh} onChange={setRefresh}/>
+                {courseInfo ? courseInfo.status !==2 ?<UpdateCourse courseid={courseId} refresh={refresh} onChange={setRefresh}/>:"":""}
                 <div className="inner-course-content">
                       
                       {content ? 
@@ -105,7 +106,7 @@ export default  function  CoursePage() {
 
                       </>:""}
                       
-                      <FormDialog courseId={courseId} refresh={refresh} onChange={setRefresh}/>
+                    {courseInfo ? courseInfo.status !==2 ?  <FormDialog courseId={courseId} refresh={refresh} onChange={setRefresh}/> :"":""}
                 </div>
               </div>
             </Col>
@@ -148,19 +149,20 @@ export default  function  CoursePage() {
                         </>:""}
                     </div>
                 </Row>
-                <Row className="mx-0 course_info_container mt-2">
-                    <Col md="4" xs="6">
-                      <button title="Publish Course" type="button" className="button-add-lecture shadow " onClick={handlePublishCourse}>
-                      {isPending ?"Loding..":"Publish Course"}
-                      </button>
-                    </Col>
-                    <Col md="4" xs="6">
+                {courseInfo ? courseInfo.status !==2 ?<Row className="mx-0 course_info_container mt-2">
+                    
+                    <Col md="6" xs="6">
                       <AddAttachment courseId={courseId} refresh={refresh} onChange={setRefresh}/>
                     </Col>
-                    <Col md="4" xs="12">
+                    <Col md="6" xs="6">
                       <AddQuize courseId={courseId} refresh={refresh} onChange={setRefresh}/>
                     </Col>
-                </Row>
+                    <Col md="12" xs="12">
+                      {courseInfo ? courseInfo.status === 0 ?<button title="Publish Course" type="button" className="button-add-lecture shadow " onClick={handlePublishCourse}>
+                      {isPending ?"Loding..":"Publish Course"}
+                      </button> :"" : ""}
+                    </Col>
+                </Row> :"" :""}
                     
                 <Link href={`/dashboard/teacher`} className="go_back_button">
                   <ArrowForwardIosIcon className="go_back_icon" />

@@ -103,7 +103,7 @@ export default  function  CoursePage() {
             <Row className="outer-container-course mx-0">
                         <Col lg="6" md="12"  xs="12" className="p-2">
                           <div className="inner-container-course shadow">
-                          {courseInfo?.image ?<Image alt="image" className='inner-course-image'width={100} height={15} priority={true} src={BaseUrl+courseInfo.image} />:""}
+                          {courseInfo?.image ?<Image alt="image" className='inner-course-image'width={100} height={15} priority={true} src={courseInfo.image} />:""}
                             <div className="inner-course-content">
                                   
                                   {content ? 

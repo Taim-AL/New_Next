@@ -1,6 +1,6 @@
 import { Bars } from "react-loader-spinner";
 
-export const Loder = ({width , height , color}) => {
+export  const Loder = ({width , height , color}) => {
     return ( 
         <>
         {/* <div className="loder-continer" > */}

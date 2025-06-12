@@ -79,7 +79,7 @@ export default function Courses(){
   
     return(
         <>
-            <Row className="BottomNavigationContainerOuter mx-0">
+            <Row className="BottomNavigationContainerOuter mx-0 mt-3">
                 <Col lg='12' md='12' xs='12' className="BottomNavigationContainer">
                     <BottomNavigation
                         showLabels
@@ -102,12 +102,11 @@ export default function Courses(){
                         coursesProg?.length !==0 && value === "progress"  ? 
                         <>
                             {coursesProg.map((e,i)=>{
-                                if(e.status === 0){
                                 return(
-                                <Col lg='4' md='6'xs='12' key={i} className="course-card-container">
-                                    <CourseCard type={1} href={`student/myCourse/${e.id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
+                                <Col lg='3' md='6'xs='12' key={i} className="course-card-container">
+                                    <CourseCard type={0} id={e.id} href={`student/myCourse/${e.id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
                                 </Col>
-                                )}
+                                )
                             })}
                             {/* {totalPagesProg ?<Pagination2 attr="page1" totalPages={totalPagesProg}/>:""} */}
                         </>
@@ -118,12 +117,11 @@ export default function Courses(){
                         coursesSaved && coursesSaved?.length !==0 && value === "saved"  ? 
                         <>
                             {coursesSaved.map((e,i)=>{
-                                if(e.status === 0){
                                 return(
                                 <Col lg='4' md='6'xs='12' key={i} >
-                                    <CourseCard type={1} href={`student/course/${e.id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
+                                    <CourseCard type={0} id={e.id} href={`student/course/${e.id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
                                 </Col>
-                                )}
+                                )
                             })}
                             
                         </>
@@ -134,12 +132,11 @@ export default function Courses(){
                         coursesComp && coursesComp?.length !==0 && value === "compleated"  ? 
                         <>
                             {coursesComp.map((e,i)=>{
-                                if(e.status === 0){
                                 return(
                                 <Col lg='4' md='6'xs='12' key={i} >
-                                    <CourseCard type={1} href={`student/myCourse/${e.id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
+                                    <CourseCard type={0} id={e.id} href={`student/myCourse/${e.id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
                                 </Col>
-                                )}
+                                )
                             })}
                             {/* {totalPagesComp ?<Pagination2 attr="page1" totalPages={totalPagesComp}/>:""} */}
                         </>

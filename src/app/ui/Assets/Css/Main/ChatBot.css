@@ -71,6 +71,8 @@
     background-color: #555;
     color: white;
     align-self: flex-start;
+    /* animation: typing 2s steps(30, end) , blink 0.7s step-end infinite;   */
+    
   }
 
   .message.user {
@@ -98,13 +100,14 @@
     border: 1px solid #ccc;
   }
 
-  .input-area button {
+  .send_chat_button {
     margin-left: 10px;
     padding: 10px 15px;
     border-radius: 25px;
     border: none;
     background-color: #ccc;
     cursor: pointer;
+    color: #8c8cfc;
   }
 
   .send-icon{
@@ -112,7 +115,7 @@
     transition: 0.5s !important;
   }
 
-  .input-area button:hover .send-icon{
+  .send_chat_button:hover .send-icon{
     color: rgb(86, 88, 221) !important;
     transition: 0.5s !important;
   }
@@ -150,3 +153,13 @@
     transform: rotateZ(10deg) !important;
     transform: translateY(-1rem) !important;
   }
+
+
+  @keyframes typing {
+      from { width: 0 }
+      to { width: 20ch } /* عدد الحروف تقريبي */
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }

@@ -131,7 +131,7 @@ export default function UpdateCourse({courseid ,refresh , onChange}:{courseid:st
   return (
     
     <React.Fragment>
-      <div className="add-course-container">
+      <div className="add-course-container1">
         <button title='edit-sp' className="edit-button" onClick={handleClickOpen}>
             <AutoFixHighIcon className="edit-icon" />
         </button>
@@ -165,8 +165,13 @@ export default function UpdateCourse({courseid ,refresh , onChange}:{courseid:st
                     <label className='lable-create-course'>Course Name:</label>
                     <input title='course name' type="text" className='input-create-course' value={name ?name:''}   onChange={(e)=>setName(e.target.value)}/>
 
+                    <label className='lable-create-course'>Category:</label>
+                    <CustomizedHook1 value={selectedCategorys} onChange={setSelectedCategorys} options={categorys} title='Category' />
+
+
                     <label className='lable-create-course'>Description:</label>
                     <input title='description' type="text" className='input-create-course' value={description ?description:''}  onChange={(e)=>setDescription(e.target.value)}/>
+
                 </>
             )}
             {step === 1 && (
@@ -182,8 +187,7 @@ export default function UpdateCourse({courseid ,refresh , onChange}:{courseid:st
                             </div>
                     </RadioGroup>
 
-                    <label className='lable-create-course'>Category:</label>
-                    <CustomizedHook1 value={selectedCategorys} onChange={setSelectedCategorys} options={categorys} title='Category' />
+                    
 
 
                     <label className='lable-create-course'>Requirement:</label>

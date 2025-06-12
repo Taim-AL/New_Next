@@ -17,12 +17,12 @@ import Axios from '@/app/lib/axios';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import SearchSt from './StudentSearch';
-
+import NotificationMenu from '../Teacher/NotifecationsMenu';
 
 
 function NavbarSt() {
     const {image , points} = useAuth();
-    const imageUrl = BaseUrl + image;
+    // const imageUrl = BaseUrl + image;
     const [hasMounted, setHasMounted] = useState(false);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
     const router = useRouter();
@@ -51,7 +51,7 @@ function NavbarSt() {
 
     return ( 
         <>       
-            <Row className='mx-0 NavbarSt shadow'>
+            <Row className='mx-0 NavbarSt '>
                 <Col lg='4' md='4' xs='6' className='logo-containerSt'>
                     <Image className="icon-outerNavSt " src={logo} alt='campess'/>
                     <h3 className='navbar-logoSt '> <span className='span1St'>C</span>AMPESS</h3>
@@ -64,16 +64,19 @@ function NavbarSt() {
                     <button title='points' className="button-navbarSt">
                         <AutoAwesomeIcon className="icon-navSt"/>
                     </button>
-                    <button title='notifacations' className="button-navbarSt">  
+                    {/* <button title='notifacations' className="button-navbarSt">  
                         <NotificationsNoneIcon className="icon-navSt"/>
-                    </button>
+                    </button> */}
+                    <Box sx={{ flexGrow: 0 }}>
+                        <NotificationMenu role='student' />
+                    </Box>
                     {/* <Avatar className='user-avatar'>OP</Avatar> */}
                        {/* <Avatar className='user-avatar' alt="T" src={ image ?String(imageUrl):""} /> */}
                 
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                            {hasMounted &&<Avatar className='user-avatarSt' alt="Remy Sharp" src={ image ?String(imageUrl):""} />}
+                            {hasMounted &&<Avatar className='user-avatarSt' alt="Remy Sharp" src={ image ?image:""} />}
                         </IconButton>
                         </Tooltip>
                         <Menu

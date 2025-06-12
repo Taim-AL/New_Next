@@ -31,6 +31,12 @@ export default  function FormDialog({courseId ,refresh , onChange}:{courseId:str
     event.preventDefault();
     setOpen(false);
     setStep(0);
+    setFrom(null)
+    setTo(null)
+    setTitle("")
+    setQuestions([{text:"" ,choices:[{choice:"",is_correct:0},{choice:"",is_correct:0},{choice:"",is_correct:0},{choice:"",is_correct:1}]}])
+    setIsFinal(false)
+    setIsAuto(true)
   };
 
 
@@ -142,34 +148,34 @@ export default  function FormDialog({courseId ,refresh , onChange}:{courseId:str
                   <label className='lable-create-course'>Is Auto Generate :</label>
                     <RadioGroup
                         aria-labelledby="demo-radio-buttons-group-label"
-                        defaultValue={true}
+                        value={isAuto}
                         >
                             <div className="level-container">
                                 <FormControlLabel required value={true} onChange={e => setIsAuto(true)}  control={<Radio />} label="Yes" />
                                 <FormControlLabel required value={false} onChange={e => setIsAuto(false)}  control={<Radio />} label="No" />
                             </div>
                     </RadioGroup>
-                  {
+                  {/* {
                     isAuto ?"":
-                    <>
+                    <> */}
                     <Row className='mx-0'>
                         <Col lg="12">
                             <label className='lable-create-course'>Quize Title :</label>
-                            <input title='Quize Title' type="text" className='input-create-course'   onChange={e => setTitle(e.target.value)}/>
+                            <input title='Quize Title' type="text" className='input-create-course' value={title}   onChange={e => setTitle(e.target.value)}/>
                         </Col>
                         <Col lg="6" md="12">
                             <label className='lable-create-course'>From Video :</label>
-                            <input title='From Video' type="number" className='input-create-course'   onChange={e => setFrom(Number(e.target.value))}/>
+                            <input title='From Video' type="number" className='input-create-course' value={from ? from : ""}  onChange={e => setFrom(Number(e.target.value))}/>
                         </Col>
                         <Col lg="6" md="12">
                             <label className='lable-create-course'>To Video :</label>
-                            <input title='From Video' type="number" className='input-create-course'   onChange={e => setTo(Number(e.target.value))}/>
+                            <input title='From Video' type="number" className='input-create-course' value={to ? to : ""}  onChange={e => setTo(Number(e.target.value))}/>
                         </Col>
                         <Col lg="12" md="12">
                             <label className='lable-create-course'>Is It Final Quize :</label>
                             <RadioGroup
                                 aria-labelledby="demo-radio-buttons-group-label"
-                                defaultValue={false}
+                                value={isFinal}
                                 >
                                     <div className="level-container">
                                         <FormControlLabel required value={true} onChange={e => setIsFinal(true)}  control={<Radio />} label="Yes" />
@@ -178,18 +184,19 @@ export default  function FormDialog({courseId ,refresh , onChange}:{courseId:str
                             </RadioGroup>
                         </Col>
                     </Row>
-                    </>
-                  }
+                    {/* </>
+                  } */}
                 </>
             )}
             {step === 1 && !isAuto && (
                 <>  
                 <label className='lable-create-course'>Questions on the video:</label>
+                <label className='lable-create-course'>One at least</label>
                   <div className="outer-container-quistions">
                     {questions.map((question,index)=>(
                         <Row key={index} className='mx-0 question-container'>
                           <Col md='12' className='outer-container-delete-question'>
-                            <button title='delete question' className='delete-question-button' onClick={()=>handleDeleteQuestion(index)}>X</button>
+                            {index !== 0 ? <button title='delete question' className='delete-question-button' onClick={()=>handleDeleteQuestion(index)}>X</button> :""}
                           </Col>
                           <Col xs="12" md="12">
                               <label className='lable-create-course'>Question:</label>

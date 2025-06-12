@@ -7,7 +7,7 @@ import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRou
 import Axios from '@/app/lib/axios';
 import IntegrationNotistack from '@/app/ui/Alert';
 
-export default function UpdateProfile({refresh , onChange}:{refresh:boolean , onChange :React.Dispatch<React.SetStateAction<boolean>>}) {
+export default function UpdateProfile({refresh , onChange , url}:{ url : string,refresh:boolean , onChange :React.Dispatch<React.SetStateAction<boolean>>}) {
   const [open, setOpen] = React.useState(false);
   const [userName , setUserName] = React.useState<string | null> (null)
   const [fullName , setFullName] = React.useState<string | null> (null)
@@ -35,7 +35,7 @@ export default function UpdateProfile({refresh , onChange}:{refresh:boolean , on
         setError("")
         setMessage("")
       try{
-      const response = await Axios.post(`teacher/update-profile`,{full_name:fullName , image:image , email:email , specialization:specialization,username:userName }
+      const response = await Axios.post(`${url}`,{full_name:fullName , image:image , email:email , specialization:specialization,username:userName }
         , {headers: {
           'Content-Type': 'multipart/form-data'
         }})

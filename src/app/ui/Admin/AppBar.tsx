@@ -15,6 +15,7 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
+import NotificationMenu from '../Teacher/NotifecationsMenu';
 // import logo from "@/app/ui/Assets/Css/BOSSLA.png"
 
 
@@ -24,10 +25,12 @@ function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   const pathname = usePathname();
   const data =[
+      {title : "Categories" , href : "/dashboard/admin/categories" },
       {title : "Students" , href : "/dashboard/admin/students" },
       {title : "Teachers" , href : "/dashboard/admin/teachers"},
       {title : "Courses" , href : "/dashboard/admin/courses"},
       {title : "Specilizations" , href : "/dashboard/admin/specilizations"},
+      {title : "Support" , href : "/dashboard/admin/support"},
     ]
   
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -115,7 +118,11 @@ function ResponsiveAppBar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
           </Box>
-
+          
+          <Box sx={{ flexGrow: 0 }}>
+              <NotificationMenu role='admin' />
+          </Box>
+          
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

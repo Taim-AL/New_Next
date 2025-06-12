@@ -13,7 +13,6 @@ import { useAuth } from '@/app/context/auth-context';
 import IntegrationNotistack from '@/app/ui/Alert';
 
 export default function AddSpecilization({refresh , onChange}:{refresh:boolean , onChange :React.Dispatch<React.SetStateAction<boolean>>}) {
-  const {id} = useAuth();
   const [open, setOpen] = React.useState(false);
   const [title , setTitle] = React.useState<string | null> (null)
   const [courses, setCourses] = React.useState<OptionType[]>([]);
@@ -23,24 +22,18 @@ export default function AddSpecilization({refresh , onChange}:{refresh:boolean ,
   const [isPending , setIsPending] = React.useState<boolean | null> (false);
   const [message , setMessage] = React.useState<string>("");
   const [error , setError] = React.useState<string>("");
-  // const data =[
-  //   {id : 1 , title:"Lorem ipsum dolor sit."},
-  //   {id : 2 , title:"Lorem ipsum dolor sit."},
-  //   {id : 3 , title:"Lorem ipsum dolor sit."},
-  //   {id : 4 , title:"Lorem ipsum dolor sit."},
-  //   {id : 5 , title:"Lorem ipsum dolor sit."},
-  //   {id : 6 , title:"Lorem ipsum dolor sit."},
-  //   {id : 7 , title:"Lorem ipsum dolor sit."},
-  // ]
+
   const handleClickOpen = () => {
     setOpen(true);
-    // setCourses(data);
   };
 
   const handleClose = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    setOpen(false);
-    onChange(!refresh)
+    setTitle(null)
+    setSelectedCourses([])
+    setImage(null)
+    setIsCompleted(0)
+    setOpen(false)
   };
 
   React.useEffect(()=>{
@@ -122,7 +115,7 @@ export default function AddSpecilization({refresh , onChange}:{refresh:boolean ,
                 <div className="parent1">
                     <div className="file-upload1">
                         <AddCircleOutlineRoundedIcon className='file-upload-icon' />
-                        <input title={image ?String(image.name):'image'}  type="file" required onChange={(e)=>setImage(e.target.files![0])} />
+                        <input title={image ?String(image.name):'image'} accept=" image/*"  type="file" required onChange={(e)=>setImage(e.target.files![0])} />
                     </div>
                 </div>
             </div>  

@@ -4,10 +4,12 @@
 }
 
 .BottomNavigationContainerOuter{
-    background-image: url('../BOSSLA2.png');
+    /* background-image: url('../BOSSLA2.png');
     background-size: contain;
     background-position: left center; 
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
+    background-color: #fff;
+    padding-bottom: 3rem;
     position: relative;
     overflow: hidden;
     z-index: 1;

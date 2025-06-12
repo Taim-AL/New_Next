@@ -51,7 +51,9 @@ export default function ProfilePage() {
           <div><span >Age :</span> {user.age} Year</div>
           <div><span >Specilization :</span> {user.specialization}</div>
         </div>
-        <UpdateProfile refresh={refresh} onChange={setRefresh}/>
+        <div className="w-100 d-flex justify-content-center">
+          <UpdateProfile url="teacher/update-profile" refresh={refresh} onChange={setRefresh}/>
+        </div>
       </div>
     </div> :""}
     <Link href={`/dashboard/teacher`} className="go_back_button">

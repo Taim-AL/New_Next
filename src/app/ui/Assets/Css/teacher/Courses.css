@@ -1,14 +1,16 @@
 .outer-container {
     /* width: 100%; */
     /* height: 60vh; */
-    background-image: url('../BOSSLA2.png');
-    background-size: contain;
+    /* background-image: url('../BOSSLA2.png'); */
+    /* background-size: contain;
     background-position: left center; 
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
     /* height: 85vh; */
+    background-color: #fff;
     position: relative;
     overflow: hidden;
     z-index: 1;
+    margin-bottom: 2rem;
   }
   
   /* background-image: url('../BOSSLA2.png');
@@ -28,28 +30,38 @@
   .inner-container{
     display: flex;
     /* flex-direction: column; */
-    justify-content:center;
+    justify-content:center !important;
     align-items: top;
     width: 100%;
   }
 
   .outer-card{
     width: 100%;
-    border-radius: 20px;
+    border-radius: 10px;
     overflow: hidden;
-    height: auto;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    height: 100%;
+    flex-direction: column;
+    border: 1px solid rgb(163, 163, 163);
     /* height: 1rem; */
-    background-color:rgba(255, 255, 255, 0.2); 
+    /* background-color:rgba(255, 255, 255, 0.2);  */
+    background-color: #fff;
     -webkit-backdrop-filter: blur(20px); 
     backdrop-filter: blur(20px);
     margin-top: 1rem;
-    
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: 0.5s;
   }
   
+.outer-card:hover{
+    transform: scale3d(1.03, 1.03, 1.08) translate3d(0.1rem, -0.25rem, 20rem);
+    transition: 0.5s;
+  }
+
   .course-image{
     width: 100%;
     height: 8rem;
+    border-radius: 5px;
   }
 
 .container-des{
@@ -58,15 +70,23 @@
 }
 
   .h2-course{
-    font-family: cursive;
-    font-size: 20px;
+    color: #0f1114;
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    vertical-align: baseline;
+    padding: 0;
+    font: inherit;
+    font-family: var(--font-open-sans), sans-serif;
+    letter-spacing: inherit;
+    font-size: 18px;
     font-weight: 600;
   }
 
   .p-course{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    font-family: var(--font-open-sans), sans-serif;
     font-size: 16px;
     font-weight: 400;
+    color: gray;
     text-overflow: clip;
 
   }
@@ -80,15 +100,7 @@
     background: none;
     border: none;
     margin-bottom: 1rem;
-  }
-
-  .go-to-course-icon{
-    transition: 0.5s;
-  }
-
-  .go-to-course:hover .go-to-course-icon{
-    color: rgb(136,138,255);
-    transition: 0.5s;
+    text-decoration: none;
   }
 
   .add-course-container{
@@ -378,6 +390,8 @@
   border-radius: 50px;
   font-size: 16px;
   cursor: pointer;
+  display: block;
+  position: relative;
   transition: background 0.3s ease;
 }
 

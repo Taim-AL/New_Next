@@ -3,10 +3,11 @@ import Axios from "@/app/lib/axios";
 import { BaseUrl, ProfileUrl, QuestionVideoResponse, QuestionVideoResponseStudent, ThumbnailUrl, VideoResponse, VideoResponseStudent, VideoUrl } from "@/app/lib/definitions";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import "@/app/ui/Assets/Css/teacher/VideoPage.css"
+import "@/app/ui/Assets/Css/student/VideoPage.css"
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Link from "next/link";
 import IntegrationNotistack from "@/app/ui/Alert";
+import ChatBot from "@/app/ui/Teacher/ChatBot";
 
 export default function VideoPage() {
     const params = useParams();
@@ -173,9 +174,8 @@ export default function VideoPage() {
   
   const handleMarkAsWatched =async ()=>{
     try{
-      const response = await Axios.post(`student/mark-video-as-watched/${videoId}`)
-              console.log( "response Created :",response)
-              // setIsPending(null)
+      const response = await Axios.post(`student/mark-content-as-done`,{},{params:{id:videoId , type:"video"}})
+      console.log("mark-content-as-done :",response)
               if( response.data.success === true){
                 setMessage(response.data.message)
                 router.push(`/dashboard/student/myCourse/${courseId}`);
@@ -214,14 +214,14 @@ export default function VideoPage() {
     <>
     {responseVideo?
     <>
-    <div className="outer-container-sp">
+    <div className="outer-container-video-st">
       <div className="d-flex justify-content-center align-items-center w-100 mt-3">
         <div className='outer-container-show-video '>
           <div className="outer-videio-component">
            <video 
            ref={videoRef} 
-           src={`${BaseUrl}${responseVideo.path}`}
-           poster={`${BaseUrl}${responseVideo.image}`} 
+           src={`${BaseUrl}/uploads/${responseVideo.path}`}
+           poster={`${responseVideo.image}`} 
            controls={!currentQuestion}  
            disablePictureInPicture     
            controlsList="nodownload"
@@ -252,10 +252,10 @@ export default function VideoPage() {
         <div className="question-box">
           <h2 className="question-text">{currentQuestion.question_text}</h2>
           <div className="choices-container">
-            {currentQuestion.choices.map((opt) => (
+            {currentQuestion.choices.map((opt , index) => (
               <button
                 title="option"
-                key={opt.text}
+                key={index}
                 onClick={() => handleAnswer(opt.text)}
                 className="choice-button"
               >
@@ -267,9 +267,11 @@ export default function VideoPage() {
       </div>
       
       )}
-        <Link href={`/dashboard/student/myCourse/${courseId}`} className="go_back_button">
+        <Link href={`/dashboard/student/myCourse/${courseId}`} className="go_back_button_video_st">
           <ArrowForwardIosIcon className="go_back_icon" />
         </Link>
+
+        <ChatBot video_id={String(videoId)}/>
     </div>
     
     

@@ -48,6 +48,7 @@ export default  function SearchMain() {
 
   React.useEffect(()=>{
     try{
+     if(query!==""){
       Axios.get(`/search/courses-and-specializations`,{params:{per_page:3 , page_number:currentPage ,q:query ,level:level ,max_points:maxEnroll ,min_points:minEnroll ,max_points_e:maxEarned ,min_points_e:minEarned ,is_completed:isCompleted }}).then(response =>{
         console.log("search response :",response)
         if(response.data.success){
@@ -55,7 +56,9 @@ export default  function SearchMain() {
           setSps(response.data.data.specializations)
           setCourses(response.data.data.courses)
         }
-    })}catch(error){
+    })
+    }
+  }catch(error){
       console.log(error)
     }
   },[query , currentPage , level , maxEnroll , minEnroll , maxEarned , minEarned , isCompleted ])
@@ -153,7 +156,7 @@ export default  function SearchMain() {
                             // if(e.status === 0){
                             return(
                             <Col lg='4' md='6'xs='12' key={i} >
-                                <CourseCard type={1} href={`/login`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
+                                <CourseCard id={e.id} type={0} href={`/login`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
                             </Col>
                             )
                         })}</> :""}
@@ -163,7 +166,7 @@ export default  function SearchMain() {
                         {Sps ? <>{Sps.map((e,i)=>{
                               return(
                               <Col lg='4' md='6'xs='12' key={i} >
-                                  <SpecilizationCard href={`/login`} com={e.is_completed} title={e.title} />
+                                  <SpecilizationCard id={e.id} src={String(e.image)} href={`/login`} com={e.is_completed} title={e.title} />
                               </Col>
                               )
                           })} </> :""}

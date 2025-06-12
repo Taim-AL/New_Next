@@ -4,6 +4,7 @@ import { Col, Row } from "react-bootstrap"
 import XIcon from '@mui/icons-material/X';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import Support from "./Support";
 
 export default function Footer(){
     return(
@@ -13,8 +14,7 @@ export default function Footer(){
                     <p className="title-footer"><span className="span-footer">©</span>Campess.com</p>
                 </Col> 
                 <Col md="4" lg="4" xs='6' className="footer-part">
-                    <Link href="/" className="center-footer-link">About</Link>
-                    <Link href="/" className="center-footer-link">Contact us</Link>
+                    
                 </Col>
                 <Col md="4" lg="4" xs='12' className="footer-part">
                     <Link href="/" className="center-footer-link">

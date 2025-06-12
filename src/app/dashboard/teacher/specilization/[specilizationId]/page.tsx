@@ -50,7 +50,7 @@ export default function SpecilizationPage() {
                 <Col lg="2" md="12"  xs="12" className="p-2"></Col>
                 <Col lg="8" md="12"  xs="12" className="p-2">
                     <div className="inner-container-sp shadow">
-                    { imageUrl ?<Image alt="image" className='inner-sp-image'  width={100} height={100} src={ imageUrl ?BaseUrl+imageUrl:""}/>  :""}
+                    { imageUrl ?<Image alt="image" className='inner-sp-image'  width={100} height={100} src={ imageUrl ?imageUrl:""}/>  :""}
                         <h2 className="sp_title">
                             {spTitle}  {isCompleated === 1 ?<VerifiedIcon/>:""}
                         </h2>
@@ -63,7 +63,7 @@ export default function SpecilizationPage() {
                             {courses.map((e,i)=>{
                                 return(
                                 <Col  md='6'xs='12' key={i} className="course-card-container">
-                                    <CourseCard type={1} href={`/dashboard/teacher/course/${e.course_id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
+                                    <CourseCard type={0} href={`/dashboard/teacher/course/${e.course_id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
                                 </Col>
                                 )
                             })}</>

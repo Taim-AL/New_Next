@@ -10,13 +10,14 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   
 
-  let token = null , id = null , role = null , image =null,points=null;
+  let token = null , id = null , role = null , image =null,points=null , session = null;
   if (typeof window !== 'undefined') {
     token = localStorage.getItem('token');
     id = localStorage.getItem('id');
     role = localStorage.getItem('role');
     image = localStorage.getItem('image');
     points = localStorage.getItem('points');
+    session = localStorage.getItem('session');
   }
   const [user, setUser] = useState<User | null>({
     id:Number(id),
@@ -34,12 +35,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     localStorage.removeItem("id");
     localStorage.removeItem("role");
     localStorage.removeItem("points");
+    localStorage.removeItem("session");
     setUser(null);
     router.push("/");
   };
 
   return (
-    <AuthContext.Provider value={{ points,user, setUser, logout , token , role , id , image }}>
+    <AuthContext.Provider value={{ points,user, setUser, logout , token , role , id , image ,session}}>
       {children}
     </AuthContext.Provider>
   );

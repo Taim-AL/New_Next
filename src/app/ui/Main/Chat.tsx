@@ -1,5 +1,6 @@
 import "@/app/ui/Assets/Css/Main/ChatBot.css"
 import SendIcon from '@mui/icons-material/Send';
+import Link from "next/link";
 
 export default function Chat(){
     return(
@@ -14,12 +15,12 @@ export default function Chat(){
                 </div>
                 <div className="input-area">
                     <input 
-                        placeholder="I need help" 
+                        placeholder="Your quistion here..." 
                         className='input-search'
                     />
-                    <button title="send">
+                    <Link href={"/login"} className="send_chat_button" title="send">
                         <SendIcon className="send-icon"/>
-                    </button>  
+                    </Link>  
                 </div>
             </div>
         </>

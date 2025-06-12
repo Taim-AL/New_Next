@@ -552,15 +552,13 @@ font-size: 50px !important;
   border: 3px solid #a8a8ff;
   border-radius: 50%;
   padding: 0.5rem;
-  position: absolute;
-  top: 1.6rem;
-  right: 0.5rem;
+  
   transition: 0.3s;
   
-}
+} 
 
 .edit-icon{
-  color:#8484fd !important;
+  color:#f0f0f0 !important;
   transition: 0.3s !important;
 }
 
@@ -573,3 +571,12 @@ font-size: 50px !important;
   color: #fff !important;
   transition: 0.3s !important;
 }
+
+.add-course-container1{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    position: absolute;
+    top: 1.6rem;
+    right: 0.5rem;
+  }

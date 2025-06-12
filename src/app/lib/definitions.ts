@@ -20,6 +20,7 @@ export type AuthContextType = {
   role: string | null;
   image : string | null;
   points : string | null;
+  session : string | null;
 };
 
 export type SnackBarType = {
@@ -51,6 +52,7 @@ export type SnackBarType = {
     username:string;
     token:string;
     role: number;
+    points : number;
   };
 
   export type choiceType={
@@ -69,6 +71,18 @@ export type SnackBarType = {
     text  :string;
     choices : Array<choiceType>;
   }
+
+  export type choiceType2={
+      choice : string ;
+      id : number ;
+      question_id :number 
+  }
+
+  export type QuestionType3 = {
+    text  :string;
+    choices : Array<choiceType2>;
+  }
+  
 
   export type OuterCourseType = {
     category_id:number;
@@ -236,6 +250,38 @@ export type SnackBarType = {
       is_correct: number
     };  
 
+    export type NotificationType = {
+      title : string 
+      body : string
+    };  
+
+
+    export type SolveQuizType = {
+      question_id : number 
+      choice_id : number 
+    };  
+
+
+    export type AutoCompleateTeachersType = {
+      id: number
+      full_name: string
+    };
+
+
+  export type MessageSupportType = {
+      id: number
+      message: string
+      sender_type : string
+      sender:{
+        username:string
+        image : string
+      }
+    };
+
+    export type ChatBotMessages = {
+        message:string
+        owner : number
+    };
     
 export const ProfileUrl = "http://127.0.0.1:8000/teacher_image/";
 export const ProfileStUrl = "http://127.0.0.1:8000/student_image/";

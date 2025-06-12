@@ -129,11 +129,11 @@ export default  function QuizPageAndUpdate({courseId ,quizId,refresh , onChange}
             Axios.get(`/teacher/get-quiz`,{params:{course_id:courseId, quiz_id: quizId}}).then(response =>{
                 console.log("Exam :", response)
                 if(response.data.success === true){
-                    setQuestions(response.data.data[Number(quizId) -1].questions);
-                    setFrom(response.data.data[Number(quizId) -1].from_video)
-                    setTo(response.data.data[Number(quizId) -1].to_video)
-                    setTitle(response.data.data[Number(quizId) -1].title)
-                    setIsFinal(response.data.data[Number(quizId) -1].is_final === 0 ? false : true)
+                    setQuestions(response.data.data.questions);
+                    setFrom(response.data.data.from_video)
+                    setTo(response.data.data.to_video)
+                    setTitle(response.data.data.title)
+                    setIsFinal(response.data.data.is_final === 0 ? false : true)
                 }
                 })}catch(error){
             console.log(error)

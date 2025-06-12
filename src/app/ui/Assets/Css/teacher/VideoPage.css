@@ -175,3 +175,15 @@
     color: #fff !important;
     transition: 0.3s !important;
   }
+
+  .subtitles_container{
+position: absolute;
+  bottom: 10%;
+  width: 100%;
+  text-align: center;
+  color: red;
+  z-index: 3;
+  font-size: 18px;
+  text-shadow: 2px 2px 4px black;
+  pointer-events: none;
+  }

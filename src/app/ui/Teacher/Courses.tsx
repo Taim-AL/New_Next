@@ -22,7 +22,9 @@ export default function Courses(){
     const [refresh , setRefresh] = useState<boolean>(false);
     const [refresh1 , setRefresh1] = useState<boolean>(false);
     const [totalPages , setTotalPages] = useState<number | null>(null);
-    const [courses , setCourses] = useState<OuterCourseType[] | null>(null);
+    const [coursesInPro , setCoursesInPro] = useState<OuterCourseType[] | null>(null);
+    const [coursesPending , setCoursesPending] = useState<OuterCourseType[] | null>(null);
+    const [coursesPublished , setCoursesPublished] = useState<OuterCourseType[] | null>(null);
     const [Sps , setSps] = useState<OuterSpType[] | null>(null);
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -30,19 +32,45 @@ export default function Courses(){
     const params = new URLSearchParams(searchParams.toString())
     useEffect(()=>{
         try{
-            Axios.get(`/teacher/courses`,{params:{per_page:6 , page_number:currentPage}}).then(response =>{
-              console.log("courses :",response)
+            Axios.get(`/teacher/courses/in-progress`).then(response =>{
+              console.log("courses progress :",response)
               if(response.data.success){
-                console.log(response.data.meta.last_page)   
-                setTotalPages(response.data.meta.last_page);
-                setCourses(response.data.data)
+                // console.log(response.data.meta.last_page)   
+                // setTotalPages(response.data.meta.last_page);
+                setCoursesInPro(response.data.data)
               }
           })}catch(error){
             console.log(error)
           }
     },[currentPage,refresh])
 
+    useEffect(()=>{
+        try{
+            Axios.get(`/teacher/courses/pending`).then(response =>{
+              console.log("courses pending :",response)
+              if(response.data.success){
+                // console.log(response.data.meta.last_page)   
+                // setTotalPages(response.data.meta.last_page);
+                setCoursesPending(response.data.data)
+              }
+          })}catch(error){
+            console.log(error)
+          }
+    },[currentPage,refresh])
 
+    useEffect(()=>{
+        try{
+            Axios.get(`/teacher/courses/published`).then(response =>{
+              console.log("courses published :",response)
+              if(response.data.success){
+                // console.log(response.data.meta.last_page)   
+                // setTotalPages(response.data.meta.last_page);
+                setCoursesPublished(response.data.data)
+              }
+          })}catch(error){
+            console.log(error)
+          }
+    },[currentPage,refresh])
     useEffect(()=>{
         try{
             Axios.get(`/teacher/specializations`,{params:{per_page:6 , page_number:currentPage}}).then(response =>{
@@ -66,7 +94,7 @@ export default function Courses(){
   const [value, setValue] = useState('created');
     return(
         <>
-            <Row className="outer-container mx-0">
+            <Row className="outer-container mx-0 mt-3">
                 <Col lg='12' md='12' xs='12'className="inner-container" >
                     <BottomNavigation
                         showLabels
@@ -80,88 +108,88 @@ export default function Courses(){
                         >
                         <BottomNavigationAction label="Published" value='pub' icon={<PublicOutlinedIcon />} />
                         <BottomNavigationAction label="Pennding" value='pennding' icon={<PublicOffOutlinedIcon />} /> 
-                        <BottomNavigationAction label="Created" value='created' icon={<EditDocumentIcon />} /> 
+                        <BottomNavigationAction label="In Progress" value='created' icon={<EditDocumentIcon />} /> 
                         <BottomNavigationAction label="Specilization" value='specilization' icon={<AutoAwesomeMotionIcon />} /> 
                     </BottomNavigation>
                 </Col>
                 
                 <Row className="mx-0">
-                    {   courses ?
-                        courses?.length !== 0 ?
+                    {
+                        coursesInPro &&
+                        coursesInPro?.length !==0 && value === "created"  ? 
                         <>
-                        { value === "created" ?
-                            <>
-                                {courses.map((e,i)=>{
-                                    if(e.status === 0){
-                                    return(
-                                    <Col lg='4' md='6'xs='12' key={i} className="course-card-container">
-                                        <CourseCard type={1} href={`teacher/course/${e.id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
-                                    </Col>
-                                    )}
-                                })}
-                            </>
-                            :value === "pennding"  ?
-                                <>
-                                {courses.map((e,i)=>{
-                                    if(e.status === 1){
-                                    return(
-                                    <Col lg='4' md='6'xs='12' key={i} className="course-card-container">
-                                        <CourseCard type={1} href={`teacher/course/${e.id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
-                                    </Col>
-                                    )}
-                                })}
-                            </>
-                            :value === "pub"  ?
-                            <>
-                                {courses.map((e,i)=>{
-                                    if(e.status === 2){
-                                    return(
-                                    <Col lg='4' md='6'xs='12' key={i} className="course-card-container">
-                                        <CourseCard type={1} href={`teacher/course/${e.id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
-                                    </Col>
-                                    )}
-                                })}
-                            </>:Sps ?<>
-                        {Sps?.length !== 0 ?
-                            <>
-                            {
-                            value === "specilization"  ?
-                            <>
-                            {Sps.map((e,i)=>{
-                                    return(
-                                    <Col lg='4' md='6'xs='12' key={i} className="course-card-container">
-                                        <SpecilizationCard href={`teacher/specilization/${e.id}`} com={e.is_completed} title={e.title} />
-                                    </Col>
-                                    )
-                                })}
-                            </>:""
-                            }
-                            </>
-                            :""}
-                        </>:""
-                        }
-                        <Col md='12' className="d-flex justify-content-center align-items-center mt-4">
-                            {totalPages ?
-                            <Pagination  totalPages={totalPages}/>
-                            :""}
-                        </Col>
+                            {coursesInPro.map((e,i)=>{
+                                return(
+                                <Col lg='3' md='6'xs='12' key={i} className="course-card-container mb-3">
+                                    <CourseCard id={e.id} type={0} href={`teacher/course/${e.id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
+                                </Col>
+                                )
+                            })}
                         </>
-                        :
+                        :""
+                    }
+
+                    {
+                        coursesPending && coursesPending?.length !==0 && value === "pennding"  ? 
+                        <>
+                            {coursesPending.map((e,i)=>{
+                                return(
+                                <Col lg='3' md='6'xs='12' key={i} className="course-card-container mb-3">
+                                    <CourseCard id={e.id} type={0} href={`teacher/course/${e.id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
+                                </Col>
+                                )
+                            })}
+                            
+                        </>
+                        :""
+                    }
+
+                    {
+                        coursesPublished && coursesPublished?.length !==0 && value === "pub"  ? 
+                        <>
+                            {coursesPublished.map((e,i)=>{
+                                return(
+                                <Col lg='3' md='6'xs='12' key={i} className="course-card-container mb-3">
+                                    <CourseCard id={e.id} type={0} href={`teacher/course/${e.id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
+                                </Col>
+                                )
+                            })}
+                        </>
+                        :""
+                    }
+
+                    {
+                        Sps && Sps?.length !==0 && value === "specilization"  ? 
+                        <>
+                            {Sps.map((e,i)=>{
+                                return(
+                                <Col lg='3' md='6'xs='12' key={i} className="course-card-container mb-3">
+                                    <SpecilizationCard id={e.id} src={String(e.image)}  href={`teacher/specilization/${e.id}`} com={e.is_completed} title={e.title} />
+                                </Col>
+                                )
+                            })}
+                            {totalPages ? <div className="w-100 d-flex justify-content-center"><Pagination  totalPages={totalPages}/> </div>:""}
+                        </>
+                        :""
+                    }
+
+                    {
+                        !coursesInPro && value === "created" || !coursesPending && value === "pennding" || !coursesPublished && value === "pub" || !Sps && value === "specilization"? 
                         <Col md='12' className="d-flex justify-content-center align-items-center ">
-                            <SentimentVeryDissatisfiedIcon className="empty_courses"/>
-                        </Col>
-                        :
-                        <Col md='12' className="d-flex justify-content-center align-items-center ">
-                            {/* <Spinner animation="grow" variant="primary" style={{width:"7rem" , height:"7rem"}}/> */}
                             <h2 className="loding_h2">
                                 Loding....
                             </h2>
                         </Col>
+                        : coursesInPro?.length ===0 && value === "created" || coursesPending?.length ===0 && value === "pennding" || coursesPublished?.length ===0 && value === "pub" || Sps?.length ===0 && value === "specilization"?
+                        <Col md='12' className="d-flex justify-content-center align-items-center ">
+                            <SentimentVeryDissatisfiedIcon className="empty_courses"/>
+                        </Col>
+                        :""
                     }
 
-                    {
-                
-                value ==="specilization" ?<AddSpecilization refresh={refresh1} onChange={setRefresh1}/> : <FormDialog refresh={refresh} onChange={setRefresh}/>
+
+                    {    
+                    value ==="specilization" ?<AddSpecilization refresh={refresh1} onChange={setRefresh1}/> : <FormDialog refresh={refresh} onChange={setRefresh}/>
                     }
 
                 </Row>

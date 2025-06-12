@@ -1,0 +1,23 @@
+.out_cat_skill_card{
+    /* margin: 0.5rem 0px; */
+    border-radius: 10px;
+    /* padding: 0.5rem 0px; */
+    height: 100%;
+    flex-direction: column;
+}
+
+.update_delete_skill_btn{
+    background: none;
+    border: none;
+    margin-bottom: 0.5rem;
+    transition: 0.5s;
+}
+
+.update_delete_skill_icon{
+    transition: 0.5s !important;
+}
+
+.update_delete_skill_btn:hover .update_delete_skill_icon{
+    color: rgb(94, 105, 202) !important;
+    transition: 0.5s !important;
+} 

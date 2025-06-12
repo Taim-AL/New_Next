@@ -34,7 +34,7 @@ function page() {
                         headers: { 'Content-Type': 'application/json' }
                     }
                 ).then(response => {
-                    console.log(response)
+                    console.log("admin login :" ,response)
                     if (response.data.success === true) {
                         const accessToken = response?.data?.data?.token;
                         localStorage.setItem('id' , response?.data?.data?.id);
@@ -54,7 +54,7 @@ function page() {
                         setPending(false);
                         setEmail("");
                         setPassword("");
-                        router.push('/dashboard/admin/students');
+                        router.push('/dashboard/admin/categories');
                     } else {
                         setPending(false);
                         setError(response.data.message)
@@ -80,7 +80,7 @@ function page() {
                                 value={email}
                                 autoComplete='off'
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder='User Name'
+                                placeholder='Email'
                                 className='input-1'
                                 required />
 

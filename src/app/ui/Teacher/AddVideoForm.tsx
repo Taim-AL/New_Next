@@ -39,7 +39,14 @@ export default  function FormDialog({courseId ,refresh , onChange}:{courseId:str
   const handleClose = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     setOpen(false);
-    setStep(0);
+    setStep(0)
+    setTitle(null)
+    setDescription(null)
+    setImage(null)
+    setVideo(null)
+    setFile(null)
+    setAttDescription(null)
+    setQuestions([{time_to_appear:"" , question:"",choices:[{choice:"",is_correct:0},{choice:"",is_correct:1}]}])
   };
 
 
@@ -173,7 +180,7 @@ export default  function FormDialog({courseId ,refresh , onChange}:{courseId:str
                       <div className="parent1">
                           <div className="file-upload1">
                               <VideoCameraBackIcon className='file-upload-icon' />
-                              <input title={video ?String(video.name):'image'} accept='video/mp4'  type="file" onChange={(e)=>setVideo(e.target.files![0])} />
+                              <input title={video ?String(video.name):'Video'} accept='video/mp4'  type="file" onChange={(e)=>setVideo(e.target.files![0])} />
                           </div>
                       </div>
                   </div> 
@@ -190,11 +197,12 @@ export default  function FormDialog({courseId ,refresh , onChange}:{courseId:str
             {step === 1 && (
                 <>  
                 <label className='lable-create-course'>Questions on the video:</label>
+                <label className='lable-create-course'>One at least</label>
                   <div className="outer-container-quistions">
                     {questions.map((question,index)=>(
                         <Row key={index} className='mx-0 question-container'>
                           <Col md='12' className='outer-container-delete-question'>
-                            <button title='delete question' className='delete-question-button' onClick={()=>handleDeleteQuestion(index)}>X</button>
+                            {index !== 0 ? <button title='delete question' className='delete-question-button' onClick={()=>handleDeleteQuestion(index)}>X</button> :""}
                           </Col>
                           <Col xs="12" md="9">
                               <label className='lable-create-course'>Question:</label>
@@ -229,9 +237,9 @@ export default  function FormDialog({courseId ,refresh , onChange}:{courseId:str
             )}
           <button onClick={handleClose}  className='cancel-create-course'>Cancel</button>
           {step === 0 ?
-          <button type="submit" className='button-create-course'onClick={()=>{setStep(step+1)}}>Next</button>
+          <button type="submit" disabled={!video || !image || !title || !description} className='button-create-course'onClick={()=>{setStep(step+1)}}>Next</button>
           :
-          <button type="button"  className='button-create-course' onClick={handleAddVideo}>
+          <button type="button" disabled={!questions[0].question || !questions[0].choices[0] || !questions[0].choices[1] || !questions[0].time_to_appear}  className='button-create-course' onClick={handleAddVideo}>
             {isPending ?"Loding..":"Create"}
           </button>
           }

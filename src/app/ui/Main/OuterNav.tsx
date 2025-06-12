@@ -12,7 +12,7 @@ function OuterNav() {
     return ( 
         <>       
             <div className='outer-container shadow'>
-                <div className="inner-container">
+                <div className="inner-container1">
                     <div className="logo-container">
                     <Image className="icon-outerNav" src={logo} alt='campess'/>
                     <h3 className='navbar-logo '> <span className='span1'>C</span>AMPESS</h3>

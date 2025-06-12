@@ -8,7 +8,7 @@
     z-index: 2; */
 }
 
-.inner-container{
+.inner-container1{
     display: flex;
     justify-content: space-between !important;
     align-items: center;

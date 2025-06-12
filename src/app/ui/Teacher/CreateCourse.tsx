@@ -39,8 +39,17 @@ export default function FormDialog({refresh , onChange}:{refresh:boolean , onCha
   const handleClose = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     setOpen(false);
-    setStep(0);
-    onChange(!refresh);
+    setName(null)
+    setDescription(null)
+    setLevel(null)
+    setPointsToEnroll(0)
+    setPointsEarned(0)
+    setStep(0)
+    setSelectedCategorys([])
+    setSelectedRequirements([])
+    setSelectedAquirements([])
+    setSkills([])
+    setImage(null)
   };
 
   React.useEffect(()=>{
@@ -112,7 +121,6 @@ export default function FormDialog({refresh , onChange}:{refresh:boolean , onCha
             setPointsToEnroll(0)
             setPointsEarned(0)
             setStep(0)
-            // setCategorys([])
             setSelectedCategorys([])
             setSelectedRequirements([])
             setSelectedAquirements([])
@@ -157,7 +165,7 @@ export default function FormDialog({refresh , onChange}:{refresh:boolean , onCha
                         <div className="parent1">
                             <div className="file-upload1">
                                 <AddCircleOutlineRoundedIcon className='file-upload-icon' />
-                                <input title={image ?String(image.name):'image'}  type="file" required onChange={(e)=>setImage(e.target.files![0])} />
+                                <input title={image ?String(image.name):'image'} accept=" image/*"  type="file" required onChange={(e)=>setImage(e.target.files![0])} />
                             </div>
                         </div>
                     </div>  
@@ -165,6 +173,9 @@ export default function FormDialog({refresh , onChange}:{refresh:boolean , onCha
                     
                     <label className='lable-create-course'>Course Name:</label>
                     <input title='course name' type="text" className='input-create-course' value={name ?name:''}  required onChange={(e)=>setName(e.target.value)}/>
+
+                    <label className='lable-create-course'>Category:</label>
+                    <CustomizedHook1 value={selectedCategorys} onChange={setSelectedCategorys} options={categorys} title='Category' />
 
                     <label className='lable-create-course'>Description:</label>
                     <input title='description' type="text" className='input-create-course' value={description ?description:''} required onChange={(e)=>setDescription(e.target.value)}/>
@@ -183,8 +194,7 @@ export default function FormDialog({refresh , onChange}:{refresh:boolean , onCha
                             </div>
                     </RadioGroup>
 
-                    <label className='lable-create-course'>Category:</label>
-                    <CustomizedHook1 value={selectedCategorys} onChange={setSelectedCategorys} options={categorys} title='Category' />
+                    
 
 
                     <label className='lable-create-course'>Requirement:</label>
@@ -217,9 +227,9 @@ export default function FormDialog({refresh , onChange}:{refresh:boolean , onCha
             )}
           <button onClick={handleClose}  className='cancel-create-course'>Cancel</button>
           {step === 0 ?
-          <button type="submit" className='button-create-course' disabled ={!image || !name || !description} onClick={()=>{setStep(step+1)}}>Next</button>
+          <button type="submit" className='button-create-course' disabled ={!image || !name || !description || !selectedCategorys} onClick={()=>{setStep(step+1)}}>Next</button>
           :
-          <button type="button" onClick={handleCrearteCourse} className='button-create-course' >
+          <button type="button" onClick={handleCrearteCourse} disabled ={level === null  || !selectedRequirements || !pointsToEnroll || !pointsEarned || !selectedAquirements} className='button-create-course' >
             {isPending ?"Loding..":"Create"}
           </button>
           }

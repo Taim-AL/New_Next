@@ -81,6 +81,8 @@
     text-decoration: none;
     transition: 0.5s;
     margin-bottom: 1rem;
+    background: none;
+    border: none;
 }
 
 .center-footer-link:hover{

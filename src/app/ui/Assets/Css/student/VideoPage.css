@@ -1,0 +1,190 @@
+.outer-container-show-video{
+    width:100vh;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.outer-container-video-st {
+    background-image: url('../wallpaper4-100.jpg');
+    background-size: contain;
+    background-position: left center; 
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+    /* height: 100vh; */
+    z-index: 1;
+  }
+  
+  .outer-container-video-st::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: opacity(100%);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); 
+    background: rgba(255, 255, 255, 0.2); 
+    z-index: 1;
+  }
+  
+  .outer-container-video-st > * {
+    position: relative;
+    z-index: 2;
+  }
+
+
+.video_player {
+    width: 100vh;       /* أو تحديد عرض معين */
+    height: 50vh;
+    object-fit: cover; /* مهم جدا لجعل الصورة داخل الإطار بدون تمدد */
+    display: block;    /* لإزالة أي مساحات بيضاء غريبة */
+    max-width: 100%;   /* لا يتعدى الحاوية */
+    border-radius: 20px;
+
+  }
+  
+.outer-videio-component{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    direction: rtl ;
+}
+
+
+.custom-select {
+    padding: 10px 20px;
+    border: 2px solid rgb(136,138,255); /* لون الحواف */
+    border-radius: 8px; /* الزوايا */
+    background-color: #f9f9f9; /* لون الخلفية */
+    color: #333; /* لون الخط */
+    font-size: 16px;
+    font-weight: 500;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none; /* إزالة التنسيق الافتراضي للمتصفح */
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D'10'%20height%3D'7'%20viewBox%3D'0%200%2010%207'%20xmlns%3D'http%3A//www.w3.org/2000/svg'%3E%3Cpath%20d%3D'M0%200l5%207%205-7z'%20fill%3D'%234CAF50'/%3E%3C/svg%3E"); /* سهم أنيق */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .custom-select:hover {
+    border-color: #2196F3;
+    background-color: #f1f1f1;
+  }
+  
+  .custom-select:focus {
+    outline: none;
+    border-color: rgb(136,138,255);
+    background-color: #fff;
+  }
+  
+
+
+  .question-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* خلفية شفافة */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* فوق كل شيء */
+  }
+  
+  .question-box {
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    animation: popUp 0.4s ease-out;
+  }
+  
+  @keyframes popUp {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  .question-text {
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .choices-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    
+  }
+  
+  .choice-button {
+    padding: 15px;
+    font-size: 18px;
+    background-color: rgb(136,138,255);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+  
+  .choice-button:hover {
+    background-color: rgb(115, 117, 232);
+  }
+  
+
+  .go_back_button_video_st{
+    /* background: none; */
+    border: 3px solid #a8a8ff;
+    border-radius: 50%;
+    padding: 0.5rem;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #fff;
+    transition: 0.3s;
+    /* z-index: 3; */
+  }
+
+  .go_back_icon{
+    color: #a8a8ff !important;
+    transition: 0.3s !important;
+  }
+
+  .go_back_button:hover{
+    background-color: #a8a8ff;
+    transition: 0.3s;
+  }
+
+  .go_back_button:hover .go_back_icon{
+    color: #fff !important;
+    transition: 0.3s !important;
+  }
+
+  .subtitles_container{
+position: absolute;
+  bottom: 10%;
+  width: 100%;
+  text-align: center;
+  color: red;
+  z-index: 3;
+  font-size: 18px;
+  text-shadow: 2px 2px 4px black;
+  pointer-events: none;
+  }

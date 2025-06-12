@@ -57,7 +57,8 @@ function Navbar() {
 
     return ( 
         <>       
-            <Row className='mx-0 Navbar shadow'>
+        {/* <div className="shadow "> */}
+            <Row className='mx-0 NavbarTh '>
                 <Col lg='6' md='6' xs='6' className='logo-container'>
                     <Image className="icon-outerNav " src={logo} alt='campess'/>
                     <h3 className='navbar-logo '> <span className='span1'>C</span>AMPESS</h3>
@@ -65,32 +66,13 @@ function Navbar() {
                 
                 <Col lg='6' md='6' xs='6' className='buttons-container'>
                     <Box sx={{ flexGrow: 0 }}>
-                        {/* <NotificationMenu/> */}
-                        <Tooltip title="Open Notifications">
+                        <NotificationMenu role='teacher'/>
+                        {/* <Tooltip title="Open Notifications">
                         <IconButton onClick={handleOpenNotiMenue} sx={{ p: 0 , marginRight: '1rem' }}>
                             <NotificationsNoneIcon className="icon-nav"/>
                         </IconButton>
-                        </Tooltip>
-                        <Menu
-                        sx={{ mt: '45px'}}
-                        id="menu-appbar"
-                        anchorEl={anchorElNoti}
-                        anchorOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right',
-                        }}
-                        keepMounted
-                        transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right',
-                        }}
-                        open={Boolean(anchorElNoti)}
-                        onClose={handleCloseNotiMenue}
-                        >
-                            <MenuItem >
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing.
-                            </MenuItem>
-                        </Menu>
+                        </Tooltip> */}
+                        
                     </Box>
                     {/* <Avatar className='user-avatar'>OP</Avatar> */}
                        {/* <Avatar className='user-avatar' alt="T" src={ image ?String(imageUrl):""} /> */}
@@ -134,6 +116,7 @@ function Navbar() {
 
                 </Col>
             </Row>
+            {/* </div> */}
         </> 
      );
 }

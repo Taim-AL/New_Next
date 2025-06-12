@@ -23,6 +23,8 @@ export default  function AddAttachment({courseId ,refresh , onChange}:{courseId:
   const handleClose = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     setOpen(false);
+    setDescription(null)
+    setFile(null)
   };
 
   const handleAddAttachment =async (event: React.MouseEvent<HTMLButtonElement>)=>{

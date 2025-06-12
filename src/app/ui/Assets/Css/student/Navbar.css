@@ -2,6 +2,8 @@
   background-color:rgb(255, 255, 255); 
   padding:0px 1rem 0px 1rem ;
   border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.15);
+
 }
 .logo-containerSt{
   display: flex;
@@ -153,6 +155,7 @@
 
     .search_fillter_container{
         height: 88vh;
+        
     }
 
 

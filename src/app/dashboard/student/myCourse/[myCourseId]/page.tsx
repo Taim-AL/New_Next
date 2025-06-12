@@ -11,12 +11,14 @@ import { Col, Row } from "react-bootstrap";
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import AttachmentCard from "@/app/ui/Teacher/AttachmentCard";
+import HTMLContent from "@/app/ui/Student/Counter";
 
 export default  function  CoursePage() {
     const params = useParams();
     const courseId = params.myCourseId as string;
     const [courseInfo , setCourseInfo] = useState<InnerCourseType | null>(null)
     const [category , setCategory] = useState<string | null>(null)
+    const [progress , setProgress] = useState<number | null>(null)
     const [requirements , setRequirements] = useState<string [] | null>(null)
     const [aquirements , setAquirements] = useState<string [] | null>(null)
     const [attachments , setAttachments] = useState<AttachmentType [] | null>(null)
@@ -42,12 +44,25 @@ export default  function  CoursePage() {
           }
       },[])
 
+
+    useEffect(()=>{
+      try{
+          Axios.get(`/student/get-percentage-for-course/${courseId}`).then(response =>{
+              console.log("Course Progress :",response)
+              if(response.data.success === true){
+                setProgress(response.data.data)
+              }
+          })}catch(error){
+          console.log(error)
+          }
+      },[])
+
     return(
         <>
             <Row className="outer-container-course mx-0">
                         <Col lg="6" md="12"  xs="12" className="p-2">
                           <div className="inner-container-course shadow">
-                          {courseInfo?.image ?<Image alt="image" className='inner-course-image'width={100} height={15} priority={true} src={BaseUrl+courseInfo.image} />:""}
+                          {courseInfo?.image ?<Image alt="image" className='inner-course-image'width={100} height={15} priority={true} src={courseInfo.image} />:""}
                             <div className="inner-course-content">
                                   
                                   {content ? 
@@ -57,7 +72,7 @@ export default  function  CoursePage() {
                                       return(
                                         <ContentCard 
                                       key={i}
-                                      type={e.type}
+                                      type={e.type} 
                                       title={e.title}
                                       description={e.description || ""}
                                       lock={Boolean(e.is_locked)}
@@ -83,7 +98,11 @@ export default  function  CoursePage() {
                               <Col lg="6" md='12' xs='12'><h2 className="text-center course_title_h2"><span >Level </span>: {courseInfo ? courseInfo.level === 0? "Beginner" :courseInfo.level === 1 ?"Intermediate": "Advanced" :""}</h2></Col>
                               <Col lg="6" md='12' xs='12'><h2 className="text-center course_title_h2"><span >Point To Enroll </span>: {courseInfo ? courseInfo.point_to_enroll :""}<AutoAwesomeIcon className="points_icon"/></h2></Col>
                               <Col lg="6" md='12' xs='12'><h2 className="text-center course_title_h2"><span >Points Earned </span>: {courseInfo ? courseInfo.points_earned :""}<AutoAwesomeIcon className="points_icon"/></h2></Col>
-                              <Col lg="12" md='12' xs='12'><h2 className="text-center course_title_h2"><span >Status </span>: {courseInfo ? courseInfo.status === 0? "In Progress" :courseInfo.status === 1 ?"Pennding": "Published" :""}</h2></Col>
+                              {/* <Col lg="6" md='12' xs='12'><h2 className="text-center course_title_h2"><span >Status </span>: {courseInfo ? courseInfo.status === 0? "In Progress" :courseInfo.status === 1 ?"Pennding": "Published" :""}</h2></Col> */}
+                              {/* <Col lg="6" md='12' xs='12'><h2 className="text-center course_title_h2"><span >Your Progress </span>: {progress ? progress :0}</h2></Col> */}
+                              <Col md="12" xs="12">
+                                <h2 className="text-center course_title_h2 "><span >Your Progress </span> {progress ?<HTMLContent myCount={progress}/>:""}</h2>
+                              </Col>
                               <Col md='12' xs='12'>
                                 <h2 className="text-center course_title_h2"><span >Requairments :</span></h2>
                                 <div className="container_skills_component">
@@ -108,6 +127,7 @@ export default  function  CoursePage() {
                                     })}
                                     </>:""}
                                 </div>
+                                
                             </Row>
                             <Link href={`/dashboard/student`} className="go_back_button">
                               <ArrowForwardIosIcon className="go_back_icon" />

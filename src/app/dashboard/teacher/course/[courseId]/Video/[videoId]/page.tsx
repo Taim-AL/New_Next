@@ -6,9 +6,11 @@ import { useEffect, useRef, useState } from "react";
 import "@/app/ui/Assets/Css/teacher/VideoPage.css"
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Link from "next/link";
+import { useAuth } from "@/app/context/auth-context";
 
 export default function VideoPage() {
     const params = useParams();
+    // const token = useAuth();
     const videoId = params.videoId as string;
     const courseId = params.courseId as string;
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -21,8 +23,9 @@ export default function VideoPage() {
     const answeredTimesRef = useRef<number[]>([]);
     const audioSrc =` ${ProfileUrl}aud.mp3`;
     const audioSrc2 = `${ProfileUrl}aud2.mp3`;
-    const subtitleSrc = `/media/subs-${selectedLang}.vtt`;
-    
+    const subtitleSrc = `${ProfileUrl}sub.vtt`;
+    const [subtitleUrl, setSubtitleUrl] = useState<string | null>(null);
+
 
     useEffect(() => {
       currentQuestionRef.current = currentQuestion;
@@ -184,10 +187,33 @@ export default function VideoPage() {
         },[])
 
 
+        useEffect(() => {
+  async function fetchSubtitle() {
+    try {
+      const res = await Axios.get(`teacher/get-subtitles/${videoId}/ar`);
+      console.log("subTitle Res :" , res.data)
+      // if (!res.ok) throw new Error("فشل تحميل الترجمة");
+
+      const blob =new Blob([res.data], { type: 'text/vtt' });
+      const blobUrl = URL.createObjectURL(blob);
+      setSubtitleUrl(blobUrl); // تخزن رابط blob مؤقت
+      console.log(subtitleUrl)
+    } catch (error) {
+      console.error("خطأ في تحميل الترجمة:", error);
+    }
+  }
+
+  fetchSubtitle();
+}, []);
+
+
+
     function timeStringToSeconds(timeString: string): number {
       const [hours, minutes, seconds] = timeString.split(":").map(Number);
       return hours * 3600 + minutes * 60 + seconds;
     }
+
+    
 
   return (
     <>
@@ -199,18 +225,20 @@ export default function VideoPage() {
           <div className="outer-videio-component">
            <video 
            ref={videoRef} 
-           src={`${BaseUrl}${responseVideo.path}`}
-           poster={`${BaseUrl}${responseVideo.image}`} 
+           src={`${BaseUrl}/uploads/${responseVideo.path}`}
+           poster={`${responseVideo.image}`} 
            controls={!currentQuestion}  
            disablePictureInPicture     
            controlsList="nodownload"
-           className="video_player">
+           className="video_player"
+           >
               <track
-                key={selectedLang}
-                label={selectedLang.toUpperCase()}
-                kind="subtitles"
-                srcLang={selectedLang}
-                src={subtitleSrc}
+                label="Arabic"
+              kind="subtitles"
+              srcLang="ar"
+              src={subtitleUrl? subtitleUrl :"bla bla "}
+                className="subtitles_container"
+                default
               />
             </video>
           </div>

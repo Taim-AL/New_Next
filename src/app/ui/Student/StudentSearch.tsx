@@ -32,6 +32,7 @@ const Transition = React.forwardRef(function Transition(
 export default  function SearchSt() {
   const [open, setOpen] = React.useState(false);
   const searchParams = useSearchParams();
+  const router = useRouter();
   const params = new URLSearchParams(searchParams);
   const [level , setLevel] =React.useState<number | null>(null)
   const [maxEnroll , setMaxEnroll] =React.useState<number | null>(null)
@@ -47,17 +48,26 @@ export default  function SearchSt() {
 
   React.useEffect(()=>{
     try{
-      Axios.get(`/search/courses-and-specializations`,{params:{per_page:6 , page_number:currentPage ,q:query ,level:level ,max_points:maxEnroll ,min_points:minEnroll ,max_points_e:maxEarned ,min_points_e:minEarned ,is_completed:isCompleted }}).then(response =>{
+   if(query!==""){
+      Axios.get(`/search/courses-and-specializations`,{params:{per_page:3 , page_number:currentPage ,q:query ,level:level ,max_points:maxEnroll ,min_points:minEnroll ,max_points_e:maxEarned ,min_points_e:minEarned ,is_completed:isCompleted }}).then(response =>{
         console.log("search response :",response)
         if(response.data.success){
           setTotalPages(response.data.meta.last_page); 
           setSps(response.data.data.specializations)
           setCourses(response.data.data.courses)
         }
-    })}catch(error){
+    })
+  }
+  }catch(error){
       console.log(error)
     }
   },[query , currentPage , level , maxEnroll , minEnroll , maxEarned , minEarned , isCompleted ])
+
+React.useEffect(()=>{
+    if(!searchParams.get('page')){
+      setOpen(false)
+    }
+  },[searchParams ])
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -66,6 +76,12 @@ export default  function SearchSt() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const updateUrl =()=>{
+        const params = new URLSearchParams(searchParams);
+        params.set('page',"1".toString());
+        router.push(`/?${params}`);
+    }
 
   return (
     <React.Fragment>
@@ -95,10 +111,11 @@ export default  function SearchSt() {
         </AppBar>
         <DialogContent>
             <Row className='mx-0 search_content'>
-                <Col lg='3' xs="12" className='search_fillter_container shadow'>
+                <Col lg='3' md="12" className='search_fillter_container shadow'>
                     <label className='lable-create-course'>Level:</label>
                     <RadioGroup
                         aria-labelledby="demo-radio-buttons-group-label"
+                        onChange={(e)=> updateUrl()}
                         >
                             <div className="level-container">
                                 <FormControlLabel required value="0"  onChange={e => setLevel(0)}  control={<Radio />} label="Beginner" />
@@ -110,25 +127,26 @@ export default  function SearchSt() {
                     <Row className='mx-0'>
                         <Col xs="12" md="12">
                             <label className='lable-create-course'>Max Points To Enroll :</label>
-                            <input title='points to enroll' type="number" value={maxEnroll ?maxEnroll:''} className='input-create-course' onChange={(e)=>setMaxEnroll(Number(e.target.value))} />
+                            <input title='points to enroll' type="number" value={maxEnroll ?maxEnroll:''} className='input-create-course' onChange={(e)=>{setMaxEnroll(Number(e.target.value)); updateUrl()}}  />
                         </Col>
                         <Col xs="12" md="12">
                             <label className='lable-create-course'>Min Points To Enroll :</label>
-                            <input title='points to enroll' type="number"  value={minEnroll ?minEnroll:''} className='input-create-course' onChange={(e)=>setMinEnroll(Number(e.target.value))} />
+                            <input title='points to enroll' type="number"  value={minEnroll ?minEnroll:''} className='input-create-course' onChange={(e)=>{setMinEnroll(Number(e.target.value)); updateUrl()}} />
                         </Col>
                         <Col xs="12" md="12">
                             <label className='lable-create-course'>Max Points Earned:</label>
-                            <input title='points to enroll' type="number" value={maxEarned ?maxEarned:''} className='input-create-course' onChange={(e)=>setMaxEarned(Number(e.target.value))} />
+                            <input title='points to enroll' type="number" value={maxEarned ?maxEarned:''} className='input-create-course'  onChange={(e)=>{setMaxEarned(Number(e.target.value)); updateUrl()}} />
                         </Col>
                         <Col xs="12" md="12">
                             <label className='lable-create-course'>Min Points Earned:</label>
-                            <input title='points to enroll' type="number"  value={minEarned ?minEarned:''} className='input-create-course' onChange={(e)=>setMinEarned(Number(e.target.value))} />
+                            <input title='points to enroll' type="number"  value={minEarned ?minEarned:''} className='input-create-course' onChange={(e)=>{setMinEarned(Number(e.target.value)); updateUrl()}} />
                         </Col>
                     </Row>
                     <hr />
                     <label className='lable-create-course'>Is Compleated :</label>
                     <RadioGroup
                         aria-labelledby="demo-radio-buttons-group-label"
+                        onChange={(e)=> updateUrl()}
                         >
                             <div className="level-container">
                                 <FormControlLabel required value="1"  onChange={e => setIsCompleted(1)} control={<Radio />} label="Yes" />
@@ -137,14 +155,14 @@ export default  function SearchSt() {
                     </RadioGroup>
                 </Col>
                 {query !== "" ?
-                <Col md="9" className='shadow'>
+                <Col lg="9" md='12' className='shadow'>
                     <Row className='mx-0'>
                     <h2 className='search_courses_h2'>Courses :</h2>
                     {courses ? <>{courses.map((e,i)=>{
-                            if(e.status === 0){
+                            if(e.status === 2){
                             return(
-                            <Col lg='4' md='6'xs='12' key={i} >
-                                <CourseCard type={1} href={`student/course/${e.id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
+                            <Col lg='4' md='6'xs='12' key={i} className='mb-3' >
+                                <CourseCard  id={e.id} type={0} href={`/dashboard/student/course/${e.id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
                             </Col>
                             )}
                         })}</> :""}
@@ -153,12 +171,12 @@ export default  function SearchSt() {
                     <h2 className='search_courses_h2'>Specilizations :</h2>
                         {Sps ? <>{Sps.map((e,i)=>{
                               return(
-                              <Col lg='4' md='6'xs='12' key={i} >
-                                  <SpecilizationCard href={`student/specilization/${e.id}`} com={e.is_completed} title={e.title} />
+                              <Col lg='4' md='6'xs='12' key={i} className='mb-3'>
+                                  <SpecilizationCard id={e.id} src={String(e.image)}  href={`/dashboard/student/specilization/${e.id}`} com={e.is_completed} title={e.title} />
                               </Col>
                               )
                           })} </> :""}
-                        <Col md='12' className="d-flex justify-content-center align-items-center mt-4">
+                        <Col md='12' className="d-flex justify-content-center align-items-center mt-2 mb-4">
                             {totalPages ?
                             <Pagination  totalPages={totalPages}/>
                             :""}

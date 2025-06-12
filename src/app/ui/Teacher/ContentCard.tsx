@@ -1,13 +1,11 @@
 "use client"
 import "@/app/ui/Assets/Css/teacher/CoursePage.css"
-import image from "@/app/ui/Assets/Css/2.avif";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import clsx from 'clsx'
 import QuizIcon from '@mui/icons-material/Quiz';
 import { usePathname } from "next/navigation";
-import { BaseUrl } from "@/app/lib/definitions";
 
 export default function ContentCard({type , title ,description , lock , id , imageUrl} : {imageUrl:StaticImageData | null  ,type : string , lock : boolean , id:number ,title:string ,description:string }){
     const path = usePathname();
@@ -18,7 +16,7 @@ export default function ContentCard({type , title ,description , lock , id , ima
             "outer-content-card shadow ",
             {"outer-content-card-lock shadow " : lock ===true},
         )}>
-            { imageUrl ?<Image alt="lecture" className="image-lecture" width={100} height={100} src={ imageUrl ?BaseUrl +imageUrl:""}/>  :""}
+            { imageUrl ?<Image alt="lecture" className="image-lecture" width={100} height={100} src={ imageUrl ? imageUrl:""}/>  :""}
             <div className="name-des-container">
                 <h2 className="name-lecture">
                     {title}

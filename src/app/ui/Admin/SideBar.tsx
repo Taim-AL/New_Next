@@ -7,15 +7,19 @@ import EditDocumentIcon from '@mui/icons-material/EditDocument';
 import Link from 'next/link';
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
+import CategoryIcon from '@mui/icons-material/Category';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 
 function Sidebar() {
   const pathname = usePathname();
 
   const data =[
+    {icon : <CategoryIcon className="link-icon"/> , title : "Categories" , href : "/dashboard/admin/categories" },
     {icon : <PersonIcon className="link-icon"/> , title : "Students" , href : "/dashboard/admin/students" },
     {icon : <PersonalInjuryIcon className="link-icon"/> , title : "Teachers" , href : "/dashboard/admin/teachers"},
     {icon : <EditDocumentIcon className="link-icon"/> , title : "Courses" , href : "/dashboard/admin/courses"},
     {icon : <AutoAwesomeMotionIcon className="link-icon"/> , title : "Specilizations" , href : "/dashboard/admin/specilizations"},
+    {icon : <SupportAgentIcon className="link-icon"/> , title : "Support" , href : "/dashboard/admin/support"},
   ]
   
   return (
