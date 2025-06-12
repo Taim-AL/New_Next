@@ -1,5 +1,5 @@
 import "@/app/ui/Assets/Css/teacher/Courses.css"
-import { BottomNavigation, BottomNavigationAction } from "@mui/material";
+import { BottomNavigation, BottomNavigationAction, Skeleton, Stack } from "@mui/material";
 import PublicOutlinedIcon from '@mui/icons-material/PublicOutlined';
 import PublicOffOutlinedIcon from '@mui/icons-material/PublicOffOutlined';
 import EditDocumentIcon from '@mui/icons-material/EditDocument';
@@ -175,11 +175,28 @@ export default function Courses(){
 
                     {
                         !coursesInPro && value === "created" || !coursesPending && value === "pennding" || !coursesPublished && value === "pub" || !Sps && value === "specilization"? 
-                        <Col md='12' className="d-flex justify-content-center align-items-center ">
-                            <h2 className="loding_h2">
-                                Loding....
-                            </h2>
+                        // <Col md='12' className="d-flex justify-content-center align-items-center ">
+                        //     <h2 className="loding_h2">
+                        //         Loding....
+                        //     </h2>
+                        // </Col>
+
+                        [...Array(6)].map((_, i) => (
+                        <Col lg='3' md='6'xs='12' key={i} className="course-card-container mb-3">
+                            <Stack spacing={1} className="shadow p-2 h-100">
+                                <Skeleton variant="rounded"  height={70}  sx={{ bgcolor: '#f2f6fd' }}/>
+                            {/* For variant="text", adjust the height via font-size */}
+                                <Skeleton variant="text" width={150} sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                            </Stack>
                         </Col>
+                        ))
                         : coursesInPro?.length ===0 && value === "created" || coursesPending?.length ===0 && value === "pennding" || coursesPublished?.length ===0 && value === "pub" || Sps?.length ===0 && value === "specilization"?
                         <Col md='12' className="d-flex justify-content-center align-items-center ">
                             <SentimentVeryDissatisfiedIcon className="empty_courses"/>

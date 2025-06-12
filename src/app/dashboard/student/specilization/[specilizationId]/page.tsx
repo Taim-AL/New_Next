@@ -10,7 +10,7 @@ import { OuterCourseType } from "@/app/lib/definitions";
 import VerifiedIcon from '@mui/icons-material/Verified';
 import Link from "next/link";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import UpdateSpecilization from "@/app/ui/Teacher/updateSp";
+// import UpdateSpecilization from "@/app/ui/Teacher/updateSp";
 
 export default function SpecilizationPage() {
     const params = useParams();
@@ -25,7 +25,6 @@ export default function SpecilizationPage() {
             Axios.get(`/student/get-spec/${spId}`).then(response =>{
                 console.log("Sp :",response)
                 if(response.data.success){
-                console.log(response.data)   
                 setCourses(response.data.data.courses);
                 setImageUrl(response.data.data.image);
                 setSpTitle(response.data.data.title);
@@ -57,7 +56,7 @@ export default function SpecilizationPage() {
                             {courses.map((e,i)=>{
                                 return(
                                 <Col  md='6'xs='12' key={i} className="course-card-container">
-                                    <CourseCard type={0} href={`/dashboard/student/course/${e.id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
+                                    <CourseCard id={e.course_id} type={0} href={`/dashboard/student/course/${e.id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
                                 </Col>
                                 )
                             })}</>
