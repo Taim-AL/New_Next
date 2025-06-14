@@ -10,7 +10,7 @@ import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import SearchIcon from '@mui/icons-material/Search';
 import "@/app/ui/Assets/Css/student/Navbar.css"
-import { DialogContent, FormControlLabel, Radio, RadioGroup } from '@mui/material';
+import { DialogContent, FormControlLabel, Radio, RadioGroup, Skeleton, Stack } from '@mui/material';
 import { Col, Row } from 'react-bootstrap';
 import Axios from '@/app/lib/axios';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -19,6 +19,8 @@ import CourseCard from '../Teacher/CourseCard';
 import SpecilizationCard from '../Teacher/SpecilizationCard';
 import Pagination from '../Teacher/Pagination';
 import Search from '../Main/SearchComponent';
+import { useDebouncedCallback } from 'use-debounce';
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -43,18 +45,23 @@ export default  function SearchSt() {
   const [totalPages , setTotalPages] = React.useState<number | null>(null);
   const [courses , setCourses] = React.useState<OuterCourseType[] | null>(null);
   const [Sps , setSps] = React.useState<OuterSpType[] | null>(null);
+  const [isPending , setIsPending] = React.useState<boolean | null> (false);
+  
   const query = params.get('query')|| '';
   const currentPage = Number(searchParams.get('page')) || 1;
-
+  const { replace } = useRouter();
+  const pathname = usePathname();
   React.useEffect(()=>{
     try{
+      setIsPending(true);
    if(query!==""){
-      Axios.get(`/search/courses-and-specializations`,{params:{per_page:3 , page_number:currentPage ,q:query ,level:level ,max_points:maxEnroll ,min_points:minEnroll ,max_points_e:maxEarned ,min_points_e:minEarned ,is_completed:isCompleted }}).then(response =>{
+      Axios.get(`/search/courses-and-specializations`,{params:{per_page:4 , page_number:currentPage ,q:query ,level:level ,max_points:maxEnroll ,min_points:minEnroll ,max_points_e:maxEarned ,min_points_e:minEarned ,is_completed:isCompleted }}).then(response =>{
         console.log("search response :",response)
         if(response.data.success){
           setTotalPages(response.data.meta.last_page); 
           setSps(response.data.data.specializations)
           setCourses(response.data.data.courses)
+          setIsPending(false);
         }
     })
   }
@@ -77,6 +84,18 @@ React.useEffect(()=>{
     setOpen(false);
   };
 
+  const handleSearch = useDebouncedCallback((term) => {
+          console.log(`Searching... ${term}`);
+          const params = new URLSearchParams(searchParams);
+          params.set('page', '1');
+          if (term) {
+            params.set('query', term);
+          } else {
+            params.delete('query');
+          }
+          replace(`${pathname}?${params.toString()}`)
+        },300);
+
   const updateUrl =()=>{
         const params = new URLSearchParams(searchParams);
         params.set('page',"1".toString());
@@ -85,9 +104,22 @@ React.useEffect(()=>{
 
   return (
     <React.Fragment>
-      <Button className='search_page_button' onClick={handleClickOpen}>
+      <div className='outer-search-container-2'>
+        <button title='search' className="button-search-2" onClick={handleClickOpen}>
+            <SearchIcon className="icon-search-2"/>
+            </button>
+            <input 
+                placeholder ="Search......" 
+                className='input-search-2'
+                onChange={(e) => {
+                    handleSearch(e.target.value);
+                    }}
+                    defaultValue={searchParams.get('query')?.toString()}
+            />
+        </div>
+      {/* <Button className='search_page_button' onClick={handleClickOpen}>
         Search Page <SearchIcon className='icon_search'/>
-      </Button>
+      </Button> */}
       <Dialog
         fullScreen
         open={open}
@@ -158,24 +190,75 @@ React.useEffect(()=>{
                 <Col lg="9" md='12' className='shadow'>
                     <Row className='mx-0'>
                     <h2 className='search_courses_h2'>Courses :</h2>
-                    {courses ? <>{courses.map((e,i)=>{
+                    {courses  ? <>{courses.map((e,i)=>{
                             if(e.status === 2){
                             return(
-                            <Col lg='4' md='6'xs='12' key={i} className='mb-3' >
+                            <Col lg='3' md='6'xs='12' key={i} className='mb-3' >
                                 <CourseCard  id={e.id} type={0} href={`/dashboard/student/course/${e.id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
                             </Col>
                             )}
-                        })}</> :""}
+                        })}</> : ""}
+                        {!isPending && courses?.length === 0?
+                          
+                          <Col md='12' className="d-flex justify-content-center align-items-center ">
+                            <SentimentVeryDissatisfiedIcon className="empty_courses"/>
+                        </Col>:""}
+                        {isPending?
+                          [...Array(4)].map((_, i) => (
+                        <Col lg='3' md='6'xs='12' key={i} className="course-card-container mb-3">
+                            <div className="outer-card shadow">
+                            <Stack spacing={1} className=" p-2 h-100">
+                                <Skeleton variant="rounded"  height={70}  sx={{ bgcolor: '#f2f6fd' }}/>
+                            {/* For variant="text", adjust the height via font-size */}
+                                <Skeleton variant="text" width={150} sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                            </Stack>
+                            </div>
+                        </Col>))
+                          
+                          :""}
                       </Row>
                       <Row className='mx-0'>
                     <h2 className='search_courses_h2'>Specilizations :</h2>
                         {Sps ? <>{Sps.map((e,i)=>{
                               return(
-                              <Col lg='4' md='6'xs='12' key={i} className='mb-3'>
+                              <Col lg='3' md='6'xs='12' key={i} className='mb-3'>
                                   <SpecilizationCard id={e.id} src={String(e.image)}  href={`/dashboard/student/specilization/${e.id}`} com={e.is_completed} title={e.title} />
                               </Col>
                               )
-                          })} </> :""}
+                          })} </> : ""}
+                          {!isPending && Sps?.length === 0?
+                          
+                          <Col md='12' className="d-flex justify-content-center align-items-center ">
+                            <SentimentVeryDissatisfiedIcon className="empty_courses"/>
+                        </Col>:""}
+
+                          {isPending?
+                          [...Array(4)].map((_, i) => (
+                        <Col lg='3' md='6'xs='12' key={i} className="course-card-container mb-3">
+                            <div className="outer-card shadow">
+                            <Stack spacing={1} className=" p-2 h-100">
+                                <Skeleton variant="rounded"  height={70}  sx={{ bgcolor: '#f2f6fd' }}/>
+                            {/* For variant="text", adjust the height via font-size */}
+                                <Skeleton variant="text" width={150} sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                            </Stack>
+                            </div>
+                        </Col>))
+                          
+                          :""}
                         <Col md='12' className="d-flex justify-content-center align-items-center mt-2 mb-4">
                             {totalPages ?
                             <Pagination  totalPages={totalPages}/>

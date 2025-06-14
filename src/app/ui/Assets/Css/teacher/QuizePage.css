@@ -51,7 +51,7 @@
   
   /* القبضة (thumb) */
   .inner-container-quiz::-webkit-scrollbar-thumb {
-    background-color: rgb(136,138,255);  /* لون القبضة */
+    background-color: #1F4E79;  /* لون القبضة */
     border-radius: 50px;
     border: 2px solid #f0f0f0; /* لإضافة مسافة ناعمة حوالين القبضة */
   }

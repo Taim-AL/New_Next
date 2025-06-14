@@ -39,7 +39,7 @@ function Sidebar() {
           <div className="outer-sidebar">
               <div className="logo-container-sidebar">
                 {/* <SchoolIcon className="icon-sidebar"/> */}
-                <h2 className="logo-sidebar">CAMPESS</h2>
+                <h2 className="logo-sidebar">GenScan</h2>
               </div>
 
               <div className="Links-container-sidebar">

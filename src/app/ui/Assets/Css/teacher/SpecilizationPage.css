@@ -68,7 +68,7 @@
     
     /* القبضة (thumb) */
     .courses_container_sp::-webkit-scrollbar-thumb {
-      background-color: rgb(136,138,255);  /* لون القبضة */
+      background-color: #1F4E79;  /* لون القبضة */
       border-radius: 50px;
       border: 2px solid #f0f0f0; /* لإضافة مسافة ناعمة حوالين القبضة */
     }
@@ -80,7 +80,7 @@
 
     .go_back_button{
       /* background: none; */
-      border: 3px solid #a8a8ff;
+      border: 3px solid #1F4E79;
       border-radius: 50%;
       padding: 0.5rem;
       position: absolute;
@@ -91,12 +91,12 @@
     }
     
     .go_back_icon{
-      color: #a8a8ff !important;
+      color: #1F4E79 !important;
       transition: 0.3s !important;
     }
     
     .go_back_button:hover{
-      background-color: #a8a8ff;
+      background-color: #1F4E79;
       transition: 0.3s;
     }
     

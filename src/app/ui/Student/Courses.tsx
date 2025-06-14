@@ -1,5 +1,5 @@
 import "@/app/ui/Assets/Css/student/CoursesStudent.css"
-import { BottomNavigation, BottomNavigationAction } from "@mui/material";
+import { BottomNavigation, BottomNavigationAction, Skeleton, Stack } from "@mui/material";
 import PublicOutlinedIcon from '@mui/icons-material/PublicOutlined';
 import PublicOffOutlinedIcon from '@mui/icons-material/PublicOffOutlined';
 import EditDocumentIcon from '@mui/icons-material/EditDocument';
@@ -145,11 +145,24 @@ export default function Courses(){
 
                     {
                         !coursesProg && value === "progress" || !coursesSaved && value === "saved" || !coursesComp && value === "compleated" ? 
-                        <Col md='12' className="d-flex justify-content-center align-items-center ">
-                            <h2 className="loding_h2">
-                                Loding....
-                            </h2>
+                        [...Array(6)].map((_, i) => (
+                        <Col lg='3' md='6'xs='12' key={i} className="course-card-container mb-3">
+                            <div className="outer-card shadow">
+                            <Stack spacing={1} className=" p-2 h-100">
+                                <Skeleton variant="rounded"  height={70}  sx={{ bgcolor: '#f2f6fd' }}/>
+                            {/* For variant="text", adjust the height via font-size */}
+                                <Skeleton variant="text" width={150} sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                                <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                            </Stack>
+                            </div>
                         </Col>
+                        ))
                         : coursesComp?.length ===0 && value === "compleated" || coursesProg?.length ===0 && value === "progress" || coursesSaved?.length ===0 && value === "saved"?
                         <Col md='12' className="d-flex justify-content-center align-items-center ">
                             <SentimentVeryDissatisfiedIcon className="empty_courses"/>

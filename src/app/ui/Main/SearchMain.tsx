@@ -19,6 +19,7 @@ import { OuterCourseType, OuterSpType } from '@/app/lib/definitions';
 import CourseCard from '../Teacher/CourseCard';
 import SpecilizationCard from '../Teacher/SpecilizationCard';
 import Pagination from '../Teacher/Pagination';
+import { useDebouncedCallback } from 'use-debounce';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -45,6 +46,8 @@ export default  function SearchMain() {
   const [Sps , setSps] = React.useState<OuterSpType[] | null>(null);
   const query = params.get('query')|| '';
   const currentPage = Number(searchParams.get('page')) || 1;
+  const { replace } = useRouter();
+  const pathname = usePathname();
 
   React.useEffect(()=>{
     try{
@@ -77,11 +80,36 @@ export default  function SearchMain() {
         router.push(`/?${params}`);
     }
 
+    const handleSearch = useDebouncedCallback((term) => {
+        console.log(`Searching... ${term}`);
+        const params = new URLSearchParams(searchParams);
+        params.set('page', '1');
+        if (term) {
+          params.set('query', term);
+        } else {
+          params.delete('query');
+        }
+        replace(`${pathname}?${params.toString()}`)
+      },300);
+
   return (
     <React.Fragment>
-      <Button className='search_page_button' onClick={handleClickOpen}>
+      <div className='outer-search-container-2'>
+          <button title='search' className="button-search-2" onClick={handleClickOpen}>
+              <SearchIcon className="icon-search-2"/>
+              </button>
+              <input 
+                  placeholder ="Search......" 
+                  className='input-search-2'
+                  onChange={(e) => {
+                      handleSearch(e.target.value);
+                      }}
+                      defaultValue={searchParams.get('query')?.toString()}
+              />
+          </div>
+      {/* <Button className='search_page_button' onClick={handleClickOpen}>
         Search Page <SearchIcon className='icon_search'/>
-      </Button>
+      </Button> */}
       <Dialog
         fullScreen
         open={open}

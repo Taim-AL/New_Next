@@ -25,7 +25,7 @@
 }
 
 .span1St{
-  color: rgb(136,138,255);
+  color: #1F4E79;
 }
 
 .search-containerSt{
@@ -47,25 +47,25 @@
 }
 
 .icon-navSt{
-  color: rgb(136,138,255);
+  color: #1F4E79;
   font-size: 30px !important;
 }
 
 .pointsSt{
-  color: rgb(136,138,255);
+  color: #1F4E79;
   margin-top: 1.5rem;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .user-avatarSt{
-  background-color: rgb(136,138,255) !important;
+  background-color: #1F4E79 !important;
   /* margin-left: 3rem; */
 }
 
 .logout_buttonSt{
   background: none;
   border: none;
-  color:rgb(136,138,255) ;
+  color:#1F4E79 ;
   text-decoration: none;
 }
 
@@ -97,18 +97,18 @@
     padding: 3px 30px ;
     width: 100%;
     border: 2px solid rgb(128, 128, 128);
-    color: rgb(136,138,255);
+    color: #1F4E79;
     border-radius: 10px;
     border: none;
 }
 
  .top_par_search_container{
-    background-color: rgb(136,138,255) !important;
+    background-color: #1F4E79 !important;
  }
 
   .search_page_button{
-    color: rgb(136,138,255) !important;
-    border: 2px solid rgb(136,138,255) !important;
+    color: #1F4E79 !important;
+    border: 2px solid #1F4E79 !important;
     border-radius: 10px !important;
     padding: 0.5rem 2rem !important;
   }
@@ -118,7 +118,7 @@
 }
   .icon_search{
     margin-left: 0.5rem !important;
-    color: rgb(136,138,255) !important;
+    color: #1F4E79 !important;
   }
 
   .lable-create-course{
@@ -144,11 +144,11 @@
     margin-bottom: 5px;
   }
   .input-create-course:hover {
-      border-color: #a8a8ff;
+      border-color: #1F4E79;
     }
   
     .input-create-course:focus {
-      border-color: #a8a8ff;
+      border-color: #1F4E79;
       box-shadow: 0 0 0 2px rgb(24 144 255 / 0.2);
       outline: none;
     }
@@ -161,7 +161,7 @@
 
     .search_courses_h2{
         font-size: 23px;
-        color: #a8a8ff;
+        color: #1F4E79;
         font-style: italic;
         margin-top: 1rem;
     }

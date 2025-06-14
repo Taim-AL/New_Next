@@ -118,7 +118,7 @@
 
   .add-course-icon{
     color: #fff;
-    background-color: rgb(136,138,255);
+    background-color: #1F4E79;
     font-size: 80px !important;
     border-radius: 50%;
     padding: 0.7rem !important;
@@ -206,11 +206,11 @@
   margin-bottom: 5px;
 }
 .input-create-course:hover {
-    border-color: #a8a8ff;
+    border-color: #1F4E79;
   }
 
   .input-create-course:focus {
-    border-color: #a8a8ff;
+    border-color: #1F4E79;
     box-shadow: 0 0 0 2px rgb(24 144 255 / 0.2);
     outline: none;
   }
@@ -233,15 +233,15 @@
   }
 
   .cancel-create-course:hover{
-    background-color: rgb(136,138,255) !important;
-    border-color: rgb(136,138,255);
+    background-color: #1F4E79 !important;
+    border-color:#1F4E79;
     color: #fff;
     transition: 0.5s !important;
   }
 
   .button-create-course{
-    background-color: rgb(136,138,255);
-    border: 2px solid rgb(136,138,255);
+    background-color: #1F4E79;
+    border: 2px solid #1F4E79;
     border-radius: 10px;
     color: #fff;
     font-size: 16px ;
@@ -257,7 +257,7 @@
 
   .button-create-course:hover{
     background-color: #fff !important;
-    color: rgb(136,138,255);
+    color: #1F4E79;
     transition: 0.5s !important;
   }
 
@@ -301,7 +301,7 @@
 
 .active_pagination_number{
   border: 1px solid #fff;
-  background-color: #a8a8ff;
+  background-color: #1F4E79;
   text-decoration: none;
   color: #fff;
   margin: 0px 0.3rem;
@@ -342,7 +342,7 @@
 
 
 .not_disable_pagination_arrow:hover{  
-  color: #a8a8ff !important;
+  color: #1F4E79 !important;
   transition: 0.5s;
 }
 
@@ -356,12 +356,12 @@
 .sp_link:hover .sp_icon{
   /* font-size: 150px !important; */
   transition: 0.2s;
-  color: #a8a8ff;
+  color: #1F4E79;
 }
 
 .sp_icon{
     font-size: 150px !important;
-    color: #8383f8;
+    color: #1F4E79;
     transition: 0.2s;
 }
 
@@ -372,18 +372,18 @@
 }
 
 .empty_courses{
-  color: #8383f8;
+  color: #1F4E79;
   font-size: 10rem !important;
 }
 
 .loding_h2{
-  color: #8383f8;
+  color: #1F4E79;
   font-size: 5rem !important;
   font-style: italic;
 }
 
 .edit-button {
-  background-color: #a8a8ff ;
+  background-color: #1F4E79 ;
   color: white;
   border: none;
   padding: 10px 30px;
@@ -396,5 +396,5 @@
 }
 
 .edit-button:hover {
-  background-color: #8383ec;
+  background-color: #1F4E79;
 }

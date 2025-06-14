@@ -61,7 +61,7 @@ function Navbar() {
             <Row className='mx-0 NavbarTh '>
                 <Col lg='6' md='6' xs='6' className='logo-container'>
                     <Image className="icon-outerNav " src={logo} alt='campess'/>
-                    <h3 className='navbar-logo '> <span className='span1'>C</span>AMPESS</h3>
+                    <h3 className='navbar-logo '> <span className='span1'>Gen</span>Scan</h3>
                 </Col>
                 
                 <Col lg='6' md='6' xs='6' className='buttons-container'>

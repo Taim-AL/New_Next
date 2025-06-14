@@ -1,6 +1,10 @@
+body {
+  font-family: 'Source Sans Pro', Arial, sans-serif !important;
+}
+
 .app-bar{
     background-color: #fff !important;
-    color: rgb(94, 105, 202) !important;
+    color: #1F4E79 !important;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     /* position: fixed !important;  */
@@ -8,7 +12,7 @@
 }
 
 .menu-appbar{
-    color: rgb(94, 105, 202) !important;
+    color: #1F4E79 !important;
 }
 
 .not-active-item , .active-item{
@@ -19,13 +23,9 @@
 }
 
 .not-active-item{
-    color: rgb(94, 105, 202);
+    color: #1F4E79;
 }
 
 .active-item{
     color: rgb(245, 144, 122);
-}
-
-.title-appBar{
-    font-family: Josefin Sans !important;
 }

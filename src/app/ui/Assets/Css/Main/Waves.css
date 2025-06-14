@@ -4,7 +4,7 @@
 }
 
 .swiper-button-prev{
-    color: rgb(136,138,255) !important;
+    color: #1F4E79 !important;
 }
 
 .continar-swiper{
@@ -12,7 +12,7 @@
 }
 
 .swiper-button-next{
-    color: rgb(136,138,255) !important;
+    color: #1F4E79 !important;
 }
 
 .testimonial{
@@ -23,13 +23,13 @@
 }
 
 .quote-icon{
-    color:rgb(136,138,255);
+    color:#1F4E79;
     font-size: 15px;
     margin:0px 10px ;
 }
 
 .title{
-    color: rgb(136,138,255);
+    color: #1F4E79;
     margin-bottom: 30px;
     font-size: 5vh;
     font-weight: 700;
@@ -53,7 +53,7 @@
 
 .outer-footer{
     height: 13rem;
-    background-color: rgb(136,138,255);
+    background-color: #1F4E79;
     z-index: -1;
     padding-top: 5rem;
 }

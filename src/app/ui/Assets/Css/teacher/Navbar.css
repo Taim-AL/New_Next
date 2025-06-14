@@ -1,3 +1,7 @@
+body {
+  font-family: 'Source Sans Pro', Arial, sans-serif !important;
+}
+
 .Navbar{
     background-color:rgb(255, 255, 255); 
     padding:0px 1rem 0px 1rem ;
@@ -29,14 +33,14 @@
     color: rgb(128, 128, 128);
     font-weight: bold;
     font-size: 25px;
-    font-family: 'Courier New', Courier, monospace;
+    /* font-family: 'Courier New', Courier, monospace; */
     margin-left: 10px;
     letter-spacing: 2px;
     margin-top: 8px;
 }
 
 .span1{
-    color: rgb(136,138,255);
+    color: #1F4E79;
 }
 
 .search-container{
@@ -55,11 +59,11 @@
 
 .icon-search{
     font-size: 10px;
-    color: rgb(136,138,255);
+    color: #1F4E79;
 }
 
 .icon-search:hover{
-    color: rgb(136,138,255);
+    color: #1F4E79;
     background: none;
 }
 
@@ -68,7 +72,7 @@
     height: 40px;
     width: 500px;
     border: 2px solid rgb(128, 128, 128);
-    color: rgb(136,138,255);
+    color: #1F4E79;
     border-radius: 10px;
 }
 
@@ -85,23 +89,23 @@
 }
 
 .icon-nav{
-    color: rgb(136,138,255);
+    color: #1F4E79;
     font-size: 30px !important;
 }
 
 .points{
-    color: rgb(136,138,255);
+    color: #1F4E79;
     margin-top: 1.5rem;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
 }
 
 .user-avatar{
-    background-color: rgb(136,138,255) !important;
+    background-color: #1F4E79 !important;
 }
 
 .logout_button{
     background: none;
     border: none;
-    color:rgb(136,138,255) ;
+    color:#1F4E79 ;
     text-decoration: none;
 }

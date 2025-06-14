@@ -1,3 +1,7 @@
+body {
+  font-family: 'Source Sans Pro', Arial, sans-serif !important;
+}
+
 .body{
     display: grid;
     place-items: 
@@ -7,8 +11,8 @@
     height: 100vh;
     padding: 0 32px;
     background: white;
-    font-family: 
-        "Poppins";
+    /* font-family: 
+        "Poppins"; */
 }
 
 @media (width <= 900px){
@@ -28,7 +32,7 @@
     border-radius: 
     47% 53% 61% 39% /
     45% 51% 49% 55%;
-    background: #a8a8ff;
+    background: #1F4E79;
 }
 
 .card{
@@ -55,7 +59,7 @@
     width: 1000px ;
     height: 1000px;
     border-radius: 50%;
-    background: #a8a8ff;
+    background: #1F4E79;
 }
 
 .background::after{
@@ -67,7 +71,7 @@
     height: inherit;
     border-radius: 
         inherit;
-    background:#a8a8ff;
+    background:#1F4E79;
 }
 
 .card .logo{
@@ -150,7 +154,7 @@
     font-family: inherit;
     border: 0;
     color: #f9f9f9;
-    background:#a8a8ff;
+    background:#1F4E79;
     display: grid;
     place-items: center;
     font-weight: 500;
@@ -164,7 +168,7 @@
 }
 
 .card >footer > a{
-    color: #a8a8ff;
+    color: #1F4E79;
 }
 
 .container-trust-device{
@@ -174,7 +178,7 @@
 }
 
 .trust-button{
-    border: 2px solid #a8a8ff;
+    border: 2px solid #1F4E79;
 }
 
 .label-trust-device{
@@ -248,7 +252,7 @@
 
 .admin-login{
     /* background: none; */
-    border: 3px solid #a8a8ff;
+    border: 3px solid #1F4E79;
     border-radius: 50%;
     padding: 0.5rem;
     position: absolute;
@@ -256,12 +260,12 @@
     right: 5px;
     background-color: #fff;
     transition: 0.3s;
-    color: #a8a8ff !important;
+    color: #1F4E79 !important;
     text-decoration: none;
   }
 
   .admin-login:hover{
-    background-color: #a8a8ff;
+    background-color: #1F4E79;
     transition: 0.3s;
     color: #fff !important;
   }

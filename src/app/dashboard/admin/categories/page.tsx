@@ -10,6 +10,7 @@ import Pagination2 from "@/app/ui/Student/Pagination";
 import CategoriesOrSkilsCard from "@/app/ui/Admin/SkillCategoryCard";
 import AddCategory from "@/app/ui/Admin/AddCategory";
 import AddSkill from "@/app/ui/Admin/AddSkill";
+import { Skeleton, Stack } from "@mui/material";
 
 export default function CategoriesPage() {
   const [categories , setCategories] = useState<OptionType[] | null>(null);
@@ -81,7 +82,16 @@ useEffect(() => {
                     </Col>
                     )
                 })} 
-              </>:"length" :"Unkown"
+              </>:"length" :
+                [...Array(10)].map((_, i) => (
+                <Col  lg='3' md='4'xs='6' key={i} className="course-card-container mt-3">
+                  <div className="out_cat_skill_card d-flex align-items-stretch shadow" style={{ border: `2px solid ${colors[i % colors.length]}` }}>
+                    <Stack spacing={1} className=" p-2 h-100">
+                        <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                        <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                    </Stack>      
+                  </div>
+                </Col>))
         }
         <Col lg='3' md='4'xs='12'  className="d-flex justify-content-center ">
           <AddCategory refresh={refresh1} onChange={setRefresh1}/> 
@@ -108,7 +118,17 @@ useEffect(() => {
                     </Col>
                     )
                 })} 
-              </>:"length" :"Unkown"
+              </>:"length" :
+                [...Array(10)].map((_, i) => (
+                <Col  lg='3' md='4'xs='6' key={i} className="course-card-container mt-3">
+                  <div className="out_cat_skill_card d-flex align-items-stretch shadow" style={{ border: `2px solid ${colors[i % colors.length]}` }}>
+                    <Stack spacing={1} className=" p-2 h-100">
+                        <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                        <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+                    </Stack>      
+                  </div>
+                </Col>))
+
         }
         <Col lg='3' md='4'xs='12'  className="d-flex justify-content-center ">
           <AddSkill allCat={allCategories}  refresh={refresh2} onChange={setRefresh2}/> 

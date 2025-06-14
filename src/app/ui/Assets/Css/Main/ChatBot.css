@@ -76,7 +76,7 @@
   }
 
   .message.user {
-    background-color: #a8a8ff;
+    background-color: #1F4E79;
     color: white;
     align-self: flex-end;
   }
@@ -107,7 +107,7 @@
     border: none;
     background-color: #ccc;
     cursor: pointer;
-    color: #8c8cfc;
+    color: #1F4E79;
   }
 
   .send-icon{
@@ -124,7 +124,7 @@
     height: 4rem;
     border-bottom-right-radius: 50px;
     border-bottom-left-radius: 50px;
-    border-bottom: 2px solid #a8a8ff;
+    border-bottom: 2px solid #1F4E79;
     /* border: 1px solid #555; */
     display: flex;
     justify-content: center;
@@ -133,7 +133,7 @@
   }
 
   .chatbot-logo{
-    background-color: #a8a8ff;
+    background-color: #1F4E79;
     border-radius: 50%;
     width: 70px;
     height: 70px;

@@ -183,7 +183,8 @@ export default function Courses(){
 
                         [...Array(6)].map((_, i) => (
                         <Col lg='3' md='6'xs='12' key={i} className="course-card-container mb-3">
-                            <Stack spacing={1} className="shadow p-2 h-100">
+                            <div className="outer-card shadow">
+                            <Stack spacing={1} className=" p-2 h-100">
                                 <Skeleton variant="rounded"  height={70}  sx={{ bgcolor: '#f2f6fd' }}/>
                             {/* For variant="text", adjust the height via font-size */}
                                 <Skeleton variant="text" width={150} sx={{ fontSize: '1rem' }} />
@@ -195,6 +196,7 @@ export default function Courses(){
                                 <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
                                 <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
                             </Stack>
+                            </div>
                         </Col>
                         ))
                         : coursesInPro?.length ===0 && value === "created" || coursesPending?.length ===0 && value === "pennding" || coursesPublished?.length ===0 && value === "pub" || Sps?.length ===0 && value === "specilization"?

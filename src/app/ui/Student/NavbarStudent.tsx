@@ -54,7 +54,7 @@ function NavbarSt() {
             <Row className='mx-0 NavbarSt '>
                 <Col lg='4' md='4' xs='6' className='logo-containerSt'>
                     <Image className="icon-outerNavSt " src={logo} alt='campess'/>
-                    <h3 className='navbar-logoSt '> <span className='span1St'>C</span>AMPESS</h3>
+                    <h3 className='navbar-logoSt '> <span className='span1St'>Gen</span>Scan</h3>
                 </Col>
                 <Col lg='4' md='4' xs='6' className='search-containerSt'>
                     <SearchSt/>

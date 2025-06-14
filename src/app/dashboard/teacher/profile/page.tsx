@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { Skeleton, Stack } from "@mui/material";
 
 export default function ProfilePage() {
   
@@ -55,7 +56,28 @@ export default function ProfilePage() {
           <UpdateProfile url="teacher/update-profile" refresh={refresh} onChange={setRefresh}/>
         </div>
       </div>
-    </div> :""}
+    </div> :
+    
+    
+    <div className="profile-page">
+      <div className="profile-card">
+        <Stack spacing={1} className=" p-2 h-100">
+          <div className="d-flex justify-content-center" >
+            <Skeleton variant="circular" width={100}  height={100}  sx={{ bgcolor: '#f2f6fd' }}/>
+          </div>
+            <Skeleton variant="text" width={150} sx={{ fontSize: '1rem' }} />
+            <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+            <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+            <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+            <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+            <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+            <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+            <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+        </Stack>
+      </div>
+    </div>
+    
+    }
     <Link href={`/dashboard/teacher`} className="go_back_button">
       <ArrowForwardIosIcon className="go_back_icon" />
     </Link>
