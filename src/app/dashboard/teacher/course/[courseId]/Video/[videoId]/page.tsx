@@ -7,6 +7,7 @@ import "@/app/ui/Assets/Css/teacher/VideoPage.css"
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Link from "next/link";
 import { useAuth } from "@/app/context/auth-context";
+import { Skeleton, Stack } from "@mui/material";
 
 export default function VideoPage() {
     const params = useParams();
@@ -187,24 +188,24 @@ export default function VideoPage() {
         },[])
 
 
-        useEffect(() => {
-  async function fetchSubtitle() {
-    try {
-      const res = await Axios.get(`teacher/get-subtitles/${videoId}/ar`);
-      console.log("subTitle Res :" , res.data)
-      // if (!res.ok) throw new Error("فشل تحميل الترجمة");
+//         useEffect(() => {
+//   async function fetchSubtitle() {
+//     try {
+//       const res = await Axios.get(`teacher/get-subtitles/${videoId}/ar`);
+//       console.log("subTitle Res :" , res.data)
+//       // if (!res.ok) throw new Error("فشل تحميل الترجمة");
 
-      const blob =new Blob([res.data], { type: 'text/vtt' });
-      const blobUrl = URL.createObjectURL(blob);
-      setSubtitleUrl(blobUrl); // تخزن رابط blob مؤقت
-      console.log(subtitleUrl)
-    } catch (error) {
-      console.error("خطأ في تحميل الترجمة:", error);
-    }
-  }
+//       const blob =new Blob([res.data], { type: 'text/vtt' });
+//       const blobUrl = URL.createObjectURL(blob);
+//       setSubtitleUrl(blobUrl); // تخزن رابط blob مؤقت
+//       console.log(subtitleUrl)
+//     } catch (error) {
+//       console.error("خطأ في تحميل الترجمة:", error);
+//     }
+//   }
 
-  fetchSubtitle();
-}, []);
+//   fetchSubtitle();
+// }, []);
 
 
 
@@ -232,14 +233,14 @@ export default function VideoPage() {
            controlsList="nodownload"
            className="video_player"
            >
-              <track
+              {/* <track
                 label="Arabic"
               kind="subtitles"
               srcLang="ar"
               src={subtitleUrl? subtitleUrl :"bla bla "}
                 className="subtitles_container"
                 default
-              />
+              /> */}
             </video>
           </div>
         </div>
@@ -280,7 +281,25 @@ export default function VideoPage() {
     
     
     </>
-    :"Loading...."}
+    :
+    <div className="outer-container-sp">
+      <div className="d-flex justify-content-center align-items-center w-100 mt-3">
+        <div className='outer-container-show-video '>
+          <div className="outer-videio-component">
+              <div className="outer-card shadow">
+              <Stack spacing={1} className=" p-2 h-100">
+                  <Skeleton variant="rounded"  height={300} width={800}  sx={{ bgcolor: '#f2f6fd' }}/>
+              {/* For variant="text", adjust the height via font-size */}
+                  <Skeleton variant="text" width={150} sx={{ fontSize: '1rem' }} />
+                  
+              </Stack>
+              </div>
+      </div>
+      </div>
+      </div>
+      </div>
+    
+    }
     </>
   );
 }

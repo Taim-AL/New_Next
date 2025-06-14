@@ -13,6 +13,7 @@ import CustomizedHook1 from './AutoCompleate1';
 import Axios from '@/app/lib/axios';
 import { useAuth } from '@/app/context/auth-context';
 import IntegrationNotistack from '@/app/ui/Alert';
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
 
 export default function FormDialog({refresh , onChange}:{refresh:boolean , onChange :React.Dispatch<React.SetStateAction<boolean>>}) {
   const {id} = useAuth();
@@ -164,7 +165,8 @@ export default function FormDialog({refresh , onChange}:{refresh:boolean , onCha
                     <div className="app2">
                         <div className="parent1">
                             <div className="file-upload1">
-                                <AddCircleOutlineRoundedIcon className='file-upload-icon' />
+                                {image ?<TaskAltIcon className='file-upload-icon' />:
+                                <AddCircleOutlineRoundedIcon className='file-upload-icon' />}
                                 <input title={image ?String(image.name):'image'} accept=" image/*"  type="file" required onChange={(e)=>setImage(e.target.files![0])} />
                             </div>
                         </div>

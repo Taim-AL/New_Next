@@ -17,6 +17,7 @@ import ImageIcon from '@mui/icons-material/Image';
 import VideoCameraBackIcon from '@mui/icons-material/VideoCameraBack';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import { QuestionType } from '@/app/lib/definitions';
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
 
 export default  function FormDialog({courseId ,refresh , onChange}:{courseId:string ,refresh:boolean , onChange :React.Dispatch<React.SetStateAction<boolean>>}) {
   const {id} = useAuth();
@@ -161,7 +162,8 @@ export default  function FormDialog({courseId ,refresh , onChange}:{courseId:str
                     <div className="app1">
                         <div className="parent1">
                             <div className="file-upload1">
-                                <ImageIcon  className='file-upload-icon' />
+                                {image ? <TaskAltIcon  className='file-upload-icon' />:
+                                <ImageIcon  className='file-upload-icon' />}
                                 <input title={image ?String(image.name):'thumbnail'} accept=" image/*" type="file" onChange={(e)=>setImage(e.target.files![0])} />
                             </div>
                         </div>
@@ -170,7 +172,8 @@ export default  function FormDialog({courseId ,refresh , onChange}:{courseId:str
                     <div className="app1">
                         <div className="parent1">
                             <div className="file-upload1">
-                                <InsertDriveFileIcon className='file-upload-icon' />
+                                {file ?<TaskAltIcon className='file-upload-icon' />:
+                                <InsertDriveFileIcon className='file-upload-icon' />}
                                 <input title={file ?String(file.name):'attachment'} accept='application/pdf' type="file"  onChange={(e)=>setFile(e.target.files![0])}/>
                             </div>
                         </div>
@@ -179,7 +182,8 @@ export default  function FormDialog({courseId ,refresh , onChange}:{courseId:str
                   <div className="app2">
                       <div className="parent1">
                           <div className="file-upload1">
-                              <VideoCameraBackIcon className='file-upload-icon' />
+                              {video ?<TaskAltIcon className='file-upload-icon' />:
+                              <VideoCameraBackIcon className='file-upload-icon' />}
                               <input title={video ?String(video.name):'Video'} accept='video/mp4'  type="file" onChange={(e)=>setVideo(e.target.files![0])} />
                           </div>
                       </div>

@@ -6,6 +6,7 @@ import "@/app/ui/Assets/Css/teacher/Courses.css"
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import Axios from '@/app/lib/axios';
 import IntegrationNotistack from '@/app/ui/Alert';
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
 
 export default function UpdateProfile({refresh , onChange , url}:{ url : string,refresh:boolean , onChange :React.Dispatch<React.SetStateAction<boolean>>}) {
   const [open, setOpen] = React.useState(false);
@@ -85,7 +86,8 @@ export default function UpdateProfile({refresh , onChange , url}:{ url : string,
             <div className="app2">
                 <div className="parent1">
                     <div className="file-upload1">
-                        <AddCircleOutlineRoundedIcon className='file-upload-icon' />
+                        {image ? <TaskAltIcon className='file-upload-icon' />:
+                        <AddCircleOutlineRoundedIcon className='file-upload-icon' />}
                         <input title={image ?String(image.name):'Profile Image'}  type="file"  onChange={(e)=>setImage(e.target.files![0])} />
                     </div>
                 </div>

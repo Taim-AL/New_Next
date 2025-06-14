@@ -10,6 +10,8 @@ import Axios from '@/app/lib/axios';
 import IntegrationNotistack from '@/app/ui/Alert';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Col, Row } from 'react-bootstrap';
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
+
 
 export default function UpdateStudentInfo({type, St , refresh , onChange}:{type:string,St : StudentInfoCard ,refresh:boolean , onChange :React.Dispatch<React.SetStateAction<boolean>>}) {
   const [open, setOpen] = React.useState(false);
@@ -99,7 +101,8 @@ export default function UpdateStudentInfo({type, St , refresh , onChange}:{type:
                     <div className="app2 mt-5">
                         <div className="parent1">
                             <div className="file-upload1">
-                                <AddCircleOutlineRoundedIcon className='file-upload-icon' />
+                                {image ?<TaskAltIcon className='file-upload-icon' />:
+                                <AddCircleOutlineRoundedIcon className='file-upload-icon' />}
                                 <input title={userName ? `${userName} Image` :""} accept=" image/*"  type="file"  onChange={(e)=>setImage(e.target.files![0])} />
                             </div>
                         </div>

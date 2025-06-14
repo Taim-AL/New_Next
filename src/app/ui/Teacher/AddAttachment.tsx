@@ -8,6 +8,7 @@ import Axios from '@/app/lib/axios';
 import IntegrationNotistack from '@/app/ui/Alert';
 import { useState } from 'react';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
 
 export default  function AddAttachment({courseId ,refresh , onChange}:{courseId:string ,refresh:boolean , onChange :React.Dispatch<React.SetStateAction<boolean>>}) {
   const [open, setOpen] = useState(false);
@@ -79,7 +80,7 @@ export default  function AddAttachment({courseId ,refresh , onChange}:{courseId:
                 <div className="app2">
                     <div className="parent1">
                         <div className="file-upload1">
-                            <InsertDriveFileIcon className='file-upload-icon' />
+                            {file ?<TaskAltIcon className='file-upload-icon' />:<InsertDriveFileIcon className='file-upload-icon' />}
                             <input title={file ?String(file.name):'attachment'} accept=' application/pdf' type="file" onChange={(e)=>setFile(e.target.files![0])}  />
                         </div>
                     </div>
