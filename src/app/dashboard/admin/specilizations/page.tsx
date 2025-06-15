@@ -39,7 +39,7 @@ export default function SpPage() {
       {Sps ? <>{Sps.map((e,i)=>{
           return(
           <Col lg='4' md='6'xs='12' key={i} className="mb-3">
-              <SpecilizationCard  id={e.id} src={e.image} href={`specilizations/${e.id}`} com={e.is_completed} title={e.title} />
+              <SpecilizationCard  id={e.id} src={String(e.image)} href={`specilizations/${e.id}`} com={e.is_completed} title={e.title} />
           </Col>
           )
       })}</> :""}
