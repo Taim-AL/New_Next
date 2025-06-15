@@ -151,7 +151,7 @@ export default  function QuizPageAndUpdate({courseId ,quizId,refresh , onChange}
     
     <React.Fragment>
         <button title="Add Quize" type="button" className="quiz_update_button " onClick={handleClickOpen}>
-            <ArrowForwardIosIcon className="icon_arrow" />
+            <ArrowForwardIosIcon className="icon_arrow" /> 
         </button>
     {from ?
     <>                            

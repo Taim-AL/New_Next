@@ -74,7 +74,7 @@ export default  function  CoursePage() {
                   </Link>
                   <Row className="mx-0 pt-4 pb-4 h-100">
                     <Col lg="6" md="12" xs="12" className="d-flex align-items-stretch flex-column">
-                      <img alt="AIU" className="AIU_logo" src={"http://127.0.0.1:3000/AIU.png"}/>
+                      {/* <img alt="AIU" className="AIU_logo" src={"http://127.0.0.1:3000/AIU.png"}/> */}
                       <h2 className="course2_title_h2"> {courseInfo ? courseInfo.name :""}</h2> 
                       <p>This course belongs to the category <span className="category_span">{category ? category:""}</span></p>
                       {mounted ?<div className="d-flex align-items-center"><Avatar className="instructor_avatar" alt={String(userName)} /><p className="mt-3">Instructor : <span className="category_span">{userName}</span></p></div> : ""}
@@ -184,95 +184,7 @@ export default  function  CoursePage() {
 
 
 
-            <Row className="outer-container-course mx-0">
-                        <Col lg="6" md="12"  xs="12" className="p-2">
-                          <div className="inner-container-course shadow">
-                          {courseInfo?.image ?<Image alt="image" className='inner-course-image'width={100} height={15} priority={true} src={courseInfo.image} />:""}
-                            <div className="inner-course-content">
-                                  
-                                  {/* {content ? 
-                                  <>
-                                  
-                                    {content.map((e,i)=>{
-                                      return(
-                                        <ContentCard 
-                                      key={i}
-                                      type={e.type} 
-                                      title={e.title}
-                                      description={e.description || ""}
-                                      lock={Boolean(e.is_locked)}
-                                      id={e.id}
-                                      imageUrl={e.type === "video" && e.image ? e.image : null}/>
-                                      )                  
-                                    })}
             
-                                  </>:""} */}
-                            </div>
-                          </div>
-                        </Col>
-                        <Col md="12" lg="6" xs="12" className="p-2">
-                          <div className="inner-container-course shadow">
-                            <Row className="mx-0 course_info_container mt-2">
-                              <Col md='12' xs='12' >
-                                <h2 className="text-center course_title_h2"><span >Title </span>: {courseInfo ? courseInfo.name :""}</h2>
-                              </Col>
-                              <Col md='12' xs='12'>
-                                <h2 className="text-center course_title_h2"><span >Description </span>: {courseInfo ? courseInfo.description :""}</h2>
-                              </Col>
-                              <Col lg="6" md='12' xs='12'><h2 className="text-center course_title_h2"><span >Category </span>: {category ? category:""}</h2></Col>
-                              <Col lg="6" md='12' xs='12'><h2 className="text-center course_title_h2"><span >Level </span>: {courseInfo ? courseInfo.level === 0? "Beginner" :courseInfo.level === 1 ?"Intermediate": "Advanced" :""}</h2></Col>
-                              <Col lg="6" md='12' xs='12'><h2 className="text-center course_title_h2"><span >Point To Enroll </span>: {courseInfo ? courseInfo.point_to_enroll :""}<AutoAwesomeIcon className="points_icon"/></h2></Col>
-                              <Col lg="6" md='12' xs='12'><h2 className="text-center course_title_h2"><span >Points Earned </span>: {courseInfo ? courseInfo.points_earned :""}<AutoAwesomeIcon className="points_icon"/></h2></Col>
-                              {/* <Col lg="6" md='12' xs='12'><h2 className="text-center course_title_h2"><span >Status </span>: {courseInfo ? courseInfo.status === 0? "In Progress" :courseInfo.status === 1 ?"Pennding": "Published" :""}</h2></Col> */}
-                              {/* <Col lg="6" md='12' xs='12'><h2 className="text-center course_title_h2"><span >Your Progress </span>: {progress ? progress :0}</h2></Col> */}
-                              <Col md="12" xs="12">
-                                <h2 className="text-center course_title_h2 "><span >Your Progress </span> {progress ?<HTMLContent myCount={progress}/>:""}</h2>
-                              </Col>
-                              <Col md='12' xs='12'>
-                                <h2 className="text-center course_title_h2"><span >Requairments :</span></h2>
-                                <div className="container_skills_component">
-                                  {requirements? 
-                                    <>
-                                    {requirements.map((e,i)=>{
-                                        return(
-                                          <h2 className="skils_component" key={i}>{e} <span>#</span></h2>
-                                        )
-                                    })}
-                                    </>:""}
-                                </div>
-                              </Col>
-                              <Col md='12' xs='12'><h2 className="text-center course_title_h2"><span >Aquairments :</span></h2></Col>
-                              <div className="container_skills_component">
-                              {aquirements? 
-                                    <>
-                                    {aquirements.map((e,i)=>{
-                                        return(
-                                          <h2 className="skils_component" key={i}>{e} <span>#</span></h2>
-                                        )
-                                    })}
-                                    </>:""}
-                                </div>
-                                
-                            </Row>
-                            <Link href={`/dashboard/student`} className="go_back_button">
-                              <ArrowForwardIosIcon className="go_back_icon" />
-                            </Link>
-            
-                            <Row className="mx-0 course_info_container mt-2 pt-3">
-                            {attachments? 
-                              <>
-                              {attachments.map((e,i)=>{
-                                  return(
-                                    <AttachmentCard key={i} file_path={e.file_path} text={e.text} type={false}/>
-                                  )
-                              })}
-                              </>:""}
-                            </Row>
-            
-            
-                          </div>
-                        </Col>
-                    </Row>
         </>
     )
 }

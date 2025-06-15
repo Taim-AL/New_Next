@@ -13,9 +13,11 @@ import { QuestionType2, QuestionType3, SolveQuizType } from '@/app/lib/definitio
 // import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useRouter } from 'next/navigation';
 import HTMLContent from './Counter';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+
 
 export default  function QuizPageAndSolve({courseId ,quizId,refresh , onChange}:{quizId:string ,courseId:string ,refresh:boolean , onChange :React.Dispatch<React.SetStateAction<boolean>>}) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);
   const [from , setFrom] = React.useState<number | null> (null)
   const [to , setTo] = React.useState<number | null> (null)
@@ -37,6 +39,10 @@ export default  function QuizPageAndSolve({courseId ,quizId,refresh , onChange}:
     setOpen(false);
     router.push(`/dashboard/student/myCourse/${courseId}`)
     setStep(0);
+  };
+
+  const handleClickOpen = () => {
+    setOpen(true);
   };
 
 
@@ -176,6 +182,9 @@ const handleLeaveQuiz =async (event: React.MouseEvent<HTMLButtonElement>)=>{
     <>
     {from ?
     <React.Fragment>
+      <button title="take Quiz" type="button" className="quiz_update_button " onClick={handleClickOpen}>
+          <ArrowForwardIosIcon className="icon_arrow" /> 
+      </button>
       <Dialog
         open={open}
         onClose={handleClose}
@@ -375,11 +384,7 @@ const handleLeaveQuiz =async (event: React.MouseEvent<HTMLButtonElement>)=>{
       {message !== "" ? <IntegrationNotistack variant="success"  message={message}/> : "" }
     </React.Fragment>
     :
-    <div  className="d-flex justify-content-center align-items-center ">
-            <h2 className="loding_h2">
-                Loding....
-            </h2>
-        </div>
+    "...."
     }
     </>
   );

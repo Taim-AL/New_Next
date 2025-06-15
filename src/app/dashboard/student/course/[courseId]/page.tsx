@@ -110,13 +110,13 @@ export default  function  CoursePage() {
 
     return(
         <>
-<div className="outer-container-course2">
+        <div className="outer-container-course2">
           <Link href={`/dashboard/teacher`} className="go_back_button">
             <ArrowForwardIosIcon className="go_back_icon" />
           </Link>
           <Row className="mx-0 pt-4 pb-4 h-100">
             <Col lg="6" md="12" xs="12" className="d-flex align-items-stretch flex-column">
-              <img alt="AIU" className="AIU_logo" src={"http://127.0.0.1:3000/AIU.png"}/>
+              {/* <img alt="AIU" className="AIU_logo" src={"http://127.0.0.1:3000/AIU.png"}/> */}
               <h2 className="course2_title_h2"> {courseInfo ? courseInfo.name :""}</h2> 
               <p>This course belongs to the category <span className="category_span">{category ? category:""}</span></p>
               {mounted ?<div className="d-flex align-items-center"><Avatar className="instructor_avatar" alt={String(userName)} /><p className="mt-3">Instructor : <span className="category_span">{userName}</span></p></div> : ""}

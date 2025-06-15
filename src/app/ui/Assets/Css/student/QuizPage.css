@@ -25,15 +25,15 @@
   }
 
   .cancel-create-course:hover{
-    background-color: rgb(136,138,255) !important;
-    border-color: rgb(136,138,255);
+    background-color: #1F4E79 !important;
+    border-color: #1F4E79;
     color: #fff;
     transition: 0.5s !important;
   }
 
   .button-create-course{
-    background-color: rgb(136,138,255);
-    border: 2px solid rgb(136,138,255);
+    background-color: #1F4E79;
+    border: 2px solid #1F4E79;
     border-radius: 10px;
     color: #fff;
     font-size: 16px ;
@@ -49,7 +49,7 @@
 
   .button-create-course:hover{
     background-color: #fff !important;
-    color: rgb(136,138,255);
+    color: #1F4E79;
     transition: 0.5s !important;
   }
 
