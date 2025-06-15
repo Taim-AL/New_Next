@@ -10,7 +10,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   
 
-  let token = null , id = null , role = null , image =null,points=null , session = null;
+  let token = null , id = null , role = null , image =null,points=null , session = null , userName = null;
   if (typeof window !== 'undefined') {
     token = localStorage.getItem('token');
     id = localStorage.getItem('id');
@@ -18,6 +18,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     image = localStorage.getItem('image');
     points = localStorage.getItem('points');
     session = localStorage.getItem('session');
+    userName = localStorage.getItem('userName');
   }
   const [user, setUser] = useState<User | null>({
     id:Number(id),
@@ -41,7 +42,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ points,user, setUser, logout , token , role , id , image ,session}}>
+    <AuthContext.Provider value={{ points,user, setUser, logout , token , role , id , image ,session , userName}}>
       {children}
     </AuthContext.Provider>
   );

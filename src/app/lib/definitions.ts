@@ -21,6 +21,7 @@ export type AuthContextType = {
   image : string | null;
   points : string | null;
   session : string | null;
+  userName : string | null;
 };
 
 export type SnackBarType = {

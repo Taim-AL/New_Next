@@ -99,7 +99,7 @@ export default function NotificationMenu({role} : {role : string}) {
         {notifications.length === 0 ? (
           <MenuItem disabled>
             <Typography variant="body2" color="textSecondary">
-              لا توجد إشعارات
+              No Notifications yet
             </Typography>
           </MenuItem>
         ) : (

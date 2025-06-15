@@ -20,7 +20,7 @@ export default function HTMLContent({myCount}:{myCount:number}) {
  */
 
 const text = {
-    fontSize: 64,
-    color: "#a8a8ff",
+    fontSize: 27,
+    color: "#1F4E79",
     
 }

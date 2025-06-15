@@ -5,6 +5,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import AddIcon from '@mui/icons-material/Add';
 import "@/app/ui/Assets/Css/teacher/CoursePage.css"
+import "@/app/ui/Assets/Css/teacher/CoursePage2.css"
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import { Col, Row } from 'react-bootstrap';
@@ -139,8 +140,8 @@ export default  function FormDialog({courseId ,refresh , onChange}:{courseId:str
   return (
     
     <React.Fragment>
-        <button title="Add Video" type="button" className="button-add-lecture shadow " onClick={handleClickOpen}>
-            <AddIcon className="add-lecture-icon"/>
+        <button title="Add Video" type="button" className="button_add_video  " onClick={handleClickOpen}>
+            Add Video
         </button>
       <Dialog
         open={open}

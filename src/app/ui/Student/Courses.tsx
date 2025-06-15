@@ -118,7 +118,7 @@ export default function Courses(){
                         <>
                             {coursesSaved.map((e,i)=>{
                                 return(
-                                <Col lg='4' md='6'xs='12' key={i} >
+                                <Col lg='3' md='6'xs='12' key={i} >
                                     <CourseCard type={0} id={e.id} href={`student/course/${e.id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
                                 </Col>
                                 )
@@ -133,7 +133,7 @@ export default function Courses(){
                         <>
                             {coursesComp.map((e,i)=>{
                                 return(
-                                <Col lg='4' md='6'xs='12' key={i} >
+                                <Col lg='3' md='6'xs='12' key={i} >
                                     <CourseCard type={0} id={e.id} href={`student/myCourse/${e.id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
                                 </Col>
                                 )

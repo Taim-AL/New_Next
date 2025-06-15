@@ -44,6 +44,7 @@ function Login() {
                         localStorage.setItem('id' , response?.data?.data?.id);
                         localStorage.setItem('role' , String(1));
                         localStorage.setItem('image' , response?.data?.data?.image );
+                        localStorage.setItem('userName' , response?.data?.data?.username );
                         setUser({
                             id:response?.data?.data?.id,
                             fullName:response?.data?.data?.full_name,

@@ -1,0 +1,165 @@
+body {
+  font-family: 'Source Sans Pro', Arial, sans-serif !important;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 0em;
+  color: #0f1114;
+  background-color: #f2f6fd;
+}
+.outer-container-course2 {
+    background-color: #e6edfb;
+    /* position: relative; */
+    padding: 0px 4rem 4rem 4rem ;
+  }
+  
+  
+  
+
+  .course2_title_h2{
+    color: #0f1114;
+    font-family:'Source Sans Pro', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 2.25rem;
+  }
+
+  .AIU_logo{
+    width: 130px;
+    height: 130px;
+    margin-bottom: -2rem;
+  }
+
+  .category_span{
+    font-weight: 600;
+  }
+
+  .instructor_avatar{
+        background-color: #1F4E79 !important;
+        margin-right: 1rem;
+  }
+
+  .course2_image{
+    width: 100%;
+    height: 30vh;
+    border-radius: 20px;  
+  }
+
+  .outer_container_course_info{
+    padding: 0px 4rem;
+  }
+
+  .inner_container_course_info{
+    background-color: #fff;
+    margin-top: -4rem;
+    z-index: 2;
+    padding: 1rem 4rem;
+  }
+
+  .course2_info_title{
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    color: #0f1114;
+    letter-spacing: -0.003em;
+  }
+
+  .course2_info_description{
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: #5b6780;
+    letter-spacing: 0em;
+    width: 90%;
+  }
+
+  .description_skills_outer_container{
+    padding: 4rem 4rem;
+
+  }
+
+  .skils_component_2{
+    background-color: #e8eef7;
+    padding: 0.5rem;
+    margin-left: 0.8rem;
+    color: #0f1114;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 0em;
+    border-radius: 20px;
+  }
+
+  
+
+  .content_inner_container{
+    border: 2px solid #e1ebf9;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 2rem 3rem ;
+  }
+
+  .contenet_icon{
+    margin-right: 1rem;
+  }
+
+  .link_content_card{
+    text-decoration: none;
+
+  }
+
+  .icon_arrow{
+    color: #0f1114 !important;
+  }
+
+  .quiz_card{
+    background-color: #fff;
+    border-bottom: 2px solid #99a2b7;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.7rem 1rem;
+    cursor: pointer;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin-bottom: 1rem;
+  
+}
+
+.quiz_update_button{
+    background: none;
+    border: none;
+}
+
+.buttons_course_group{
+    width: 100%;
+    padding: 0px 5rem;
+    margin-bottom: -3rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.button_add_video{
+    padding: 1rem 90px;
+    /* width: 20rem; */
+    margin-bottom: 1rem;
+    background-color: #1F4E79;
+    border: none;
+    color: #fff;
+    font-weight: 500;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 1.2rem;
+    transition: 0.3s;
+    margin: 0px 1rem;
+    margin-bottom: 1rem;
+}
+
+.button_add_video:hover{
+    background-color: #3b71a3;
+    transition: 0.3s;
+}
+
+
+.update_button_container{
+    width: 70%;
+    margin-top: 0.2em;
+    margin-left: 2rem;
+}

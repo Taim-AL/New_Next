@@ -4,6 +4,8 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import "@/app/ui/Assets/Css/teacher/CoursePage.css"
+import "@/app/ui/Assets/Css/teacher/CoursePage2.css"
+import "@/app/ui/Assets/Css/student/QuizPage.css"
 import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import { Col, Row } from 'react-bootstrap';
 import Axios from '@/app/lib/axios';
@@ -12,9 +14,11 @@ import { useState } from 'react';
 import { QuestionType2 } from '@/app/lib/definitions';
 // import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useRouter } from 'next/navigation';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+
 
 export default  function QuizPageAndUpdate({courseId ,quizId,refresh , onChange}:{quizId:string ,courseId:string ,refresh:boolean , onChange :React.Dispatch<React.SetStateAction<boolean>>}) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [from , setFrom] = React.useState<number | null> (null)
   const [to , setTo] = React.useState<number | null> (null)
   const [step , setStep] =useState<number | null> (0)
@@ -27,9 +31,9 @@ export default  function QuizPageAndUpdate({courseId ,quizId,refresh , onChange}
   const [error , setError] =useState<string>("");
   const router = useRouter();
   const [questions ,setQuestions] = useState<QuestionType2[]>([{text:"" ,choices:[{choice:"",is_correct:0},{choice:"",is_correct:0},{choice:"",is_correct:0},{choice:"",is_correct:1}]}])
-//   const handleClickOpen = () => {
-//     setOpen(true);
-//   };
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
   const handleClose = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -144,11 +148,13 @@ export default  function QuizPageAndUpdate({courseId ,quizId,refresh , onChange}
   
   return (
     <>
-    {from ?
+    
     <React.Fragment>
-        {/* <button title="Add Quize" type="button" className="button-add-lecture shadow " onClick={handleClickOpen}>
-            <ArrowForwardIosIcon className="icon-arrow" />
-        </button> */}
+        <button title="Add Quize" type="button" className="quiz_update_button " onClick={handleClickOpen}>
+            <ArrowForwardIosIcon className="icon_arrow" />
+        </button>
+    {from ?
+    <>                            
       <Dialog
         open={open}
         onClose={handleClose}
@@ -262,10 +268,11 @@ export default  function QuizPageAndUpdate({courseId ,quizId,refresh , onChange}
         </DialogActions>
         
       </Dialog>
+      </>:""}
       {error !== "" ? <IntegrationNotistack variant="error"  message={error}/> : "" }
       {message !== "" ? <IntegrationNotistack variant="success"  message={message}/> : "" }
     </React.Fragment>
-    :""}
+    
     </>
   );
 }

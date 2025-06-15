@@ -58,7 +58,7 @@ function Navbar() {
     return ( 
         <>       
         {/* <div className="shadow "> */}
-            <Row className='mx-0 NavbarTh '>
+            <Row className='mx-0 NavbarTh fixed-top'>
                 <Col lg='6' md='6' xs='6' className='logo-container'>
                     <Image className="icon-outerNav " src={logo} alt='campess'/>
                     <h3 className='navbar-logo '> <span className='span1'>Gen</span>Scan</h3>
@@ -117,6 +117,7 @@ function Navbar() {
                 </Col>
             </Row>
             {/* </div> */}
+            <div className="h-40 mb-5">..</div>
         </> 
      );
 }

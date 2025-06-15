@@ -132,11 +132,11 @@ export default function UpdateCourse({courseid ,refresh , onChange}:{courseid:st
   return (
     
     <React.Fragment>
-      <div className="add-course-container1">
-        <button title='edit-sp' className="edit-button" onClick={handleClickOpen}>
-            <AutoFixHighIcon className="edit-icon" />
+      <div className='update_button_container'>
+        <button title='edit course' className="button_add_video" onClick={handleClickOpen}>
+            Edit Course
         </button>
-    </div>
+      </div>
       <Dialog
         open={open}
         onClose={handleClose}

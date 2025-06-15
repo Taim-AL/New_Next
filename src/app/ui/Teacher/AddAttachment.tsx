@@ -62,7 +62,7 @@ export default  function AddAttachment({courseId ,refresh , onChange}:{courseId:
   return (
     
     <React.Fragment>
-        <button title="Add Attachment" type="button" className="button-add-lecture shadow " onClick={handleClickOpen}>
+        <button title="Add Attachment" type="button" className="button_add_video " onClick={handleClickOpen}>
             Add Attachment
         </button>
         <Dialog

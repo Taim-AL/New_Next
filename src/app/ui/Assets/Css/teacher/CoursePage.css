@@ -303,11 +303,11 @@ font-size: 50px !important;
   margin-bottom: 5px;
 }
 .input-create-course:hover {
-    border-color: #a8a8ff;
+    border-color: #1F4E79;
   }
 
   .input-create-course:focus {
-    border-color: #a8a8ff;
+    border-color: #1F4E79;
     box-shadow: 0 0 0 2px rgb(24 144 255 / 0.2);
     outline: none;
   }
@@ -329,15 +329,15 @@ font-size: 50px !important;
   }
 
   .cancel-create-course:hover{
-    background-color: rgb(136,138,255) !important;
-    border-color: rgb(136,138,255);
+    background-color: #1F4E79 !important;
+    border-color: #1F4E79;
     color: #fff;
     transition: 0.5s !important;
   }
 
   .button-create-course{
-    background-color: rgb(136,138,255);
-    border: 2px solid rgb(136,138,255);
+    background-color: #1F4E79;
+    border: 2px solid #1F4E79;
     border-radius: 10px;
     color: #fff;
     font-size: 16px ;
@@ -353,7 +353,7 @@ font-size: 50px !important;
 
   .button-create-course:hover{
     background-color: #fff !important;
-    color: rgb(136,138,255);
+    color: #1F4E79;
     transition: 0.5s !important;
   }
 
@@ -400,7 +400,7 @@ font-size: 50px !important;
   .course_title_h2 span{
     color: #555;
     /* text-decoration: underline; */
-    border: 2px solid #a8a8ff;
+    border: 2px solid #1F4E79;
     border-radius: 10px;
     padding: 0.2rem;
   }
@@ -412,7 +412,7 @@ font-size: 50px !important;
   }
 
 .points_icon{
-  color: #8484fd;
+  color: #1F4E79;
   margin-bottom: 0.3rem;
 }
 
@@ -430,7 +430,7 @@ font-size: 50px !important;
   font-size: 18px;
   font-style: italic;
   color: #f0f0f0;
-  background-color: #a8a8ff;
+  background-color: #1F4E79;
   border: 1px solid #f0f0f0;
   border-radius: 20px;
   padding: 5px 0.5rem;
@@ -446,7 +446,7 @@ font-size: 50px !important;
   /* width: 10rem ; */
   align-items: center;
   justify-content: space-between;
-  background-color:#8484fd;
+  background-color:#1F4E79;
   border-radius: 20px;
   padding: 0.5rem;
   margin-bottom: 1rem;
@@ -502,7 +502,7 @@ font-size: 50px !important;
 
 /* القبضة (thumb) */
 .attachment_description::-webkit-scrollbar-thumb {
-  background-color: rgb(136,138,255);  /* لون القبضة */
+  background-color: #1F4E79;  /* لون القبضة */
   border-radius: 50px;
   border: 2px solid #f0f0f0; /* لإضافة مسافة ناعمة حوالين القبضة */
 }
@@ -514,7 +514,7 @@ font-size: 50px !important;
 
 .go_back_button{
   /* background: none; */
-  border: 3px solid #a8a8ff;
+  border: 3px solid #1F4E79;
   border-radius: 50%;
   padding: 0.5rem;
   position: absolute;
@@ -522,15 +522,16 @@ font-size: 50px !important;
   right: 5px;
   background-color: #fff;
   transition: 0.3s;
+  margin-top: 5rem;
 }
 
 .go_back_icon{
-  color: #a8a8ff !important;
+  color: #1F4E79 !important;
   transition: 0.3s !important;
 }
 
 .go_back_button:hover{
-  background-color: #a8a8ff;
+  background-color: #1F4E79;
   transition: 0.3s;
 }
 

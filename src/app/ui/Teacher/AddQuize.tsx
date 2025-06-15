@@ -126,8 +126,8 @@ export default  function FormDialog({courseId ,refresh , onChange}:{courseId:str
   return (
     
     <React.Fragment>
-        <button title="Add Quize" type="button" className="button-add-lecture shadow " onClick={handleClickOpen}>
-            Add Quize
+        <button title="Add Quiz" type="button" className="button_add_video  " onClick={handleClickOpen}>
+            Add Quiz
         </button>
       <Dialog
         open={open}
