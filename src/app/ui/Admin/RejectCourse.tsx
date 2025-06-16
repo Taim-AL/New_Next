@@ -54,7 +54,7 @@ export default function RejectCourse({id}:{id:string }) {
   return (
     
     <React.Fragment>
-        <button title="Reject Course" type="button" className="button_reject_course shadow " onClick={handleClickOpen}>
+        <button title="Reject Course" type="button" className="button_add_video" onClick={handleClickOpen}>
             Reject Course
         </button>
       <Dialog
