@@ -16,6 +16,7 @@
     "axios": "^1.8.4",
     "bootstrap": "^5.3.5",
     "clsx": "^2.1.1",
+    "flatpickr": "^4.6.13",
     "hls.js": "^1.6.2",
     "laravel-echo": "^2.1.4",
     "motion": "^12.15.0",

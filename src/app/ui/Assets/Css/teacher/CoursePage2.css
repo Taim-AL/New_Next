@@ -163,3 +163,36 @@ body {
     margin-top: 0.2em;
     margin-left: 2rem;
 }
+
+
+.scripts_container{
+  background-color: #fff;
+  border: 1px solid #1F4E79;
+  border-radius: 8px;
+  padding: 1rem 2rem ;
+  display: flex;
+  flex-direction: column;
+}
+
+.not_active_lang{
+  color: #1F4E79;
+  background-color: #fff;
+  border:1px solid #1F4E79;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.not_active_lang:hover{
+  color: #fff;
+  background-color: #1F4E79;
+  border:1px solid #fff;
+  transition: 0.3s;
+}
+
+
+.active_lang{
+  color: #fff;
+  background-color: #1F4E79;
+  border:1px solid #fff;
+  border-radius: 50%;
+}

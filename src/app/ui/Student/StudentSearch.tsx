@@ -104,7 +104,7 @@ React.useEffect(()=>{
 
   return (
     <React.Fragment>
-      <div className='outer-search-container-2'>
+      <div className='outer-search-container-2 z-1'>
         <button title='search' className="button-search-2" onClick={handleClickOpen}>
             <SearchIcon className="icon-search-2"/>
             </button>

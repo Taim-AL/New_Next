@@ -1,4 +1,4 @@
-.outer-container-chatbot {
+.outer_container_recomendation {
     width: 100%;
     height: 60vh;
     background-image: url('../wallpaper3-100.jpg'); /* غيّر المسار حسب مكان الصورة */
@@ -14,7 +14,7 @@
   }
   
   /* إضافة فلتر شبيه باللي في الصورة */
-  .outer-container-chatbot::before {
+  .outer_container_recomendation::before {
     content: "";
     position: absolute;
     top: 0;
@@ -27,23 +27,17 @@
     z-index: 1;
   }
   
-  .outer-container-chatbot > * {
+  .outer_container_recomendation > * {
     position: relative;
     z-index: 2;
   }
  
-  .inner-container-chatbot{
+  .inner_container_recomendation{
     padding: 0.5rem 1rem ;
     background-color: #00000043;
     border-radius: 10px;
-    /* background-image: url('../BOSSLA.png');/* غيّر المسار حسب مكان الصورة */
-    /*background-size: contain;
-    background-position: center; /* لضمان أن البوصلة تبقى في اليسار */
-    /*background-repeat: space;
-    background-clip: padding-box; */
     -webkit-backdrop-filter: blur(3px);
     backdrop-filter: blur(3px);
-    /* margin: 5rem ; */
 }
   
   .chat-box{
@@ -52,17 +46,6 @@
       /* z-index: 2; */
       width: 600px;
       margin:  50px auto;
-      background: white;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  }
-
-  .chat-box-student{
-      position: relative;
-      width: 100%;
-      margin:  50px auto;
-      height: 70vh;
       background: white;
       border-radius: 10px;
       padding: 20px;
@@ -96,13 +79,6 @@
     display: flex;
     flex-direction: column;
     height: 15rem;
-    overflow-y: scroll;
-  }
-
-  .messages_student{
-    display: flex;
-    flex-direction: column;
-    height:60vh;
     overflow-y: scroll;
   }
 
@@ -180,33 +156,4 @@
 
     @keyframes blink {
       50% { border-color: transparent }
-    }
-
-    .language_form{
-      margin-top: 1rem;
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
-    }
-
-
-    .Recomended_course_container{
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    .Recomended_course{
-      text-decoration: none;
-      color: #555;
-      background-color: #ccc;
-      padding: 0.2rem 0.4rem;
-      margin-right: 1rem;
-      margin-top: 0.5rem;
-      border-radius: 7px; 
-      transition: 0.3s;
-    }
-
-    .Recomended_course{
-      background-color: #fff; 
-      transition: 0.3s;
     }

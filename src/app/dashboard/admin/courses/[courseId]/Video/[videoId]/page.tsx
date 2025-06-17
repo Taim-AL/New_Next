@@ -18,7 +18,7 @@ export default function VideoPage() {
     const [responseVideo , setResponseVideo] = useState<VideoResponse | null>(null)
     const [currentQuestion, setCurrentQuestion] = useState<QuestionVideoResponse | null>(null);
     const [answeredTimes, setAnsweredTimes] = useState<number[]>([]);
-    const [selectedLang, setSelectedLang] = useState("ar"); // اللغة الافتراضية
+    const [selectedLang, setSelectedLang] = useState("en"); // اللغة الافتراضية
     const currentQuestionRef = useRef<QuestionVideoResponse | null>(null);
     const answeredTimesRef = useRef<number[]>([]);
     const audioSrc =` ${ProfileUrl}aud.mp3`;

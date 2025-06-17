@@ -6,7 +6,18 @@ import 'swiper/css';
 import { Navigation, Pagination, Mousewheel, Keyboard , Autoplay} from 'swiper/modules';
 import Wave from "react-wavify";
 import "@/app/ui/Assets/Css/Main/Waves.css"
+import { Col, Row } from "react-bootstrap";
+import React from "react";
+import Axios from "@/app/lib/axios";
+import { OuterCourseType } from "@/app/lib/definitions";
+import CourseCard from "../Teacher/CourseCard";
+import "@/app/ui/Assets/Css/student/Navbar.css"
+import { Skeleton, Stack } from "@mui/material";
 export default function Waves(){
+//   const [mostcourses , setMostCourses] = React.useState<OuterCourseType[] | null>(null);
+//   const [freecourses , setfreeCourses] = React.useState<OuterCourseType[] | null>(null);
+//   const [isPending1 , setIsPending1] = React.useState<boolean>(false);
+//   const [isPending , setIsPending2] = React.useState<boolean>(false);
 
     const DataSblide=[
         {
@@ -26,8 +37,11 @@ export default function Waves(){
         },
     ]
 
+
+
     return(
         <>
+        
         <div className="outer-container-swiper">
             <div className='continar-swiper'>
                 <Swiper

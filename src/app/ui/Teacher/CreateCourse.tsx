@@ -112,8 +112,8 @@ export default function FormDialog({refresh , onChange}:{refresh:boolean , onCha
           console.log( "response Created :",response)
           setIsPending(false)
           
-          if( response.data.success === true){
-            setMessage(response.data.message)
+          if( response.status === 200){
+            setMessage("✅ Course Created Successfully")
             setOpen(false)
             onChange(!refresh)
             setName(null)
@@ -128,7 +128,7 @@ export default function FormDialog({refresh , onChange}:{refresh:boolean , onCha
             setSkills([])
             setImage(null)
           }else{
-            setError(response.data.message)
+            setError("❌ Course Not Created")
           }
 
       }catch(e : any){

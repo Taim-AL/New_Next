@@ -135,7 +135,7 @@ const handleLeaveQuiz =async (event: React.MouseEvent<HTMLButtonElement>)=>{
             <button  className='cancel-create-course' onClick={()=>{setStep(step-1)}}>Prev</button>
             )}
           <button onClick={handleClose}  className='cancel-create-course'>Cancel</button>
-          {step === 0  ?
+          {step === 0  && !isAuto?
           <button type="button" className='button-create-course'onClick={()=>{setStep(step+1)}}>Next</button>
           :""
           }

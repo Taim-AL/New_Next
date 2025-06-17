@@ -282,8 +282,15 @@ export type SnackBarType = {
     export type ChatBotMessages = {
         message:string
         owner : number
+      
     };
     
+    export type RecomendationMessages = {
+        message:string
+        owner : number
+        courses : {id:string ; name :string} [] | null
+    };
+
 export const ProfileUrl = "http://127.0.0.1:8000/teacher_image/";
 export const ProfileStUrl = "http://127.0.0.1:8000/student_image/";
 export const CourseUrl = "http://127.0.0.1:8000/course_image/";

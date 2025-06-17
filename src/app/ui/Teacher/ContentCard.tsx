@@ -17,6 +17,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import QuizPageAndUpdate from "./QuizPageWithUpdate";
 import { useAuth } from "@/app/context/auth-context";
 import QuizPageAndSolve from "../Student/QuizPageAndSolve";
+import ShowQuizForAdmin from "../Admin/ShowQuiz";
 
 export default function ContentCard({type , title ,description , lock , id , course_id ,refresh , onChange} : {type : string , lock : boolean , id:number ,course_id:string ,title:string ,description:string ,refresh:boolean , onChange :React.Dispatch<React.SetStateAction<boolean>>}){
     const path = usePathname();
@@ -65,7 +66,10 @@ export default function ContentCard({type , title ,description , lock , id , cou
                     : role === "1" ?
                     <QuizPageAndUpdate courseId={course_id} quizId={String(id)} refresh={refresh} onChange={onChange} />
                     :role === "2"?
-                    <QuizPageAndSolve courseId={course_id} quizId={String(id)} refresh={refresh} onChange={onChange} /> :""
+                    <QuizPageAndSolve courseId={course_id} quizId={String(id)} refresh={refresh} onChange={onChange} /> :
+                    role === "3"?
+                    <ShowQuizForAdmin courseId={course_id} quizId={String(id)} />
+                    :""
                     }
                 </div>
             </div>

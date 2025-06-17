@@ -56,8 +56,8 @@ function NavbarSt() {
                     <Image className="icon-outerNavSt " src={logo} alt='campess'/>
                     <h3 className='navbar-logoSt '> <span className='span1St'>Gen</span>Scan</h3>
                 </Col>
-                <Col lg='4' md='4' xs='6' className='search-containerSt'>
-                    <SearchSt/>
+                <Col lg='4' md='4' xs='6' className='search-containerSt '>
+                    <SearchSt />
                 </Col>
                 <Col lg='4' md='4' xs='12' className='buttons-containerSt'>
                     <p className='pointsSt'>{hasMounted ?points : ""}</p>

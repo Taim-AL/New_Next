@@ -136,7 +136,7 @@
   .choice-button {
     padding: 15px;
     font-size: 18px;
-    background-color: rgb(136,138,255);
+    background-color: #1F4E79;
     color: white;
     border: none;
     border-radius: 10px;
@@ -145,13 +145,35 @@
   }
   
   .choice-button:hover {
-    background-color: rgb(115, 117, 232);
+    background-color: #3672a9;
   }
   
 
+  .choice-button.correct {
+  background-color: #4caf50; /* أخضر */
+  color: white;
+}
+
+.choice-button.wrong {
+  background-color: #f44336; /* أحمر */
+  color: white;
+}
+
+.continue-button {
+  margin-top: 20px;
+  background-color: #1F4E79;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+    border-radius: 10px;
+
+}
+
   .go_back_button_video_st{
     /* background: none; */
-    border: 3px solid #a8a8ff;
+    border: 3px solid #1F4E79;
     border-radius: 50%;
     padding: 0.5rem;
     position: absolute;
@@ -163,16 +185,16 @@
   }
 
   .go_back_icon{
-    color: #a8a8ff !important;
+    color: #1F4E79 !important;
     transition: 0.3s !important;
   }
 
-  .go_back_button:hover{
-    background-color: #a8a8ff;
+  .go_back_button_video_st:hover{
+    background-color: #1F4E79;
     transition: 0.3s;
   }
 
-  .go_back_button:hover .go_back_icon{
+  .go_back_button_video_st:hover .go_back_icon{
     color: #fff !important;
     transition: 0.3s !important;
   }

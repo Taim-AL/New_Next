@@ -19,6 +19,8 @@ import VideoCameraBackIcon from '@mui/icons-material/VideoCameraBack';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import { QuestionType } from '@/app/lib/definitions';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
+import flatpickr from "flatpickr";
+import "flatpickr/dist/flatpickr.min.css";
 
 export default  function FormDialog({courseId ,refresh , onChange}:{courseId:string ,refresh:boolean , onChange :React.Dispatch<React.SetStateAction<boolean>>}) {
   const {id} = useAuth();
@@ -33,7 +35,22 @@ export default  function FormDialog({courseId ,refresh , onChange}:{courseId:str
   const [isPending , setIsPending] =useState<boolean | null> (false);
   const [message , setMessage] =useState<string>("");
   const [error , setError] =useState<string>("");
-  const [questions ,setQuestions] = useState<QuestionType[]>([{time_to_appear:"" , question:"",choices:[{choice:"",is_correct:0},{choice:"",is_correct:1}]}])
+  const [questions ,setQuestions] = useState<QuestionType[]>([])
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
+  React.useEffect(() => {
+    if (inputRef.current) {
+    flatpickr(inputRef.current, {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i:S",   // 00:00:00
+        time_24hr: true,
+        enableSeconds: true,
+        defaultHour: 0,
+        defaultMinute: 0,
+        defaultSeconds: 0,
+    });}
+  }, []);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -87,6 +104,16 @@ export default  function FormDialog({courseId ,refresh , onChange}:{courseId:str
     updatedQuestions.splice(index, 1); // نحذف العنصر من المصفوفة
     setQuestions(updatedQuestions);
   };
+
+  const validateQuestions = () => {
+  return questions.every(q =>
+    q.question.trim() !== '' &&
+    q.time_to_appear.trim() !== '' &&
+    q.choices[0].choice.trim() !== '' &&
+    q.choices[1].choice.trim() !== ''
+  );
+};
+
   
   
   const handleAddQuestion = () => {
@@ -202,28 +229,28 @@ export default  function FormDialog({courseId ,refresh , onChange}:{courseId:str
             {step === 1 && (
                 <>  
                 <label className='lable-create-course'>Questions on the video:</label>
-                <label className='lable-create-course'>One at least</label>
+                {/* <label className='lable-create-course'>One at least</label> */}
                   <div className="outer-container-quistions">
                     {questions.map((question,index)=>(
                         <Row key={index} className='mx-0 question-container'>
-                          <Col md='12' className='outer-container-delete-question'>
-                            {index !== 0 ? <button title='delete question' className='delete-question-button' onClick={()=>handleDeleteQuestion(index)}>X</button> :""}
+                          {questions.length !== 0 ? <> <Col md='12' className='outer-container-delete-question'>
+                             <button title='delete question' className='delete-question-button' onClick={()=>handleDeleteQuestion(index)}>X</button> 
                           </Col>
                           <Col xs="12" md="9">
                               <label className='lable-create-course'>Question:</label>
-                              <input title='points to enroll' type="text"  className='input-create-course'value={questions[index].question} onChange={(e) => handleQuestionChange(index, "question", e.target.value)}/>
+                              <input required title='points to enroll' type="text"  className='input-create-course'value={questions[index].question} onChange={(e) => handleQuestionChange(index, "question", e.target.value)}/>
                           </Col>
                           <Col xs="12" md="3">
                               <label className='lable-create-course'>Time To Appear:</label>
-                              <input title='points to enroll' type="time"  step={"1"}  className='input-create-course' value={questions[index].time_to_appear} onChange={(e) => handleQuestionChange(index, "time_to_appear", e.target.value)}/>
+                              <input required title='points to enroll' placeholder="00:00:00" ref={inputRef} type="text"  step={"1"}  className='input-create-course' value={questions[index].time_to_appear} onChange={(e) => handleQuestionChange(index, "time_to_appear", e.target.value)}/>
                           </Col>
                           <Col xs="12" md="6">
                               <label className='lable-create-course'>The Wrong Choice:</label>
-                              <input title='points to enroll' type="text"   className='input-create-course' value={questions[index].choices[0].choice} onChange={(e) =>handleChoiceChange(index, 0, e.target.value , 0)}/>
+                              <input required title='points to enroll' type="text"   className='input-create-course' value={questions[index].choices[0].choice} onChange={(e) =>handleChoiceChange(index, 0, e.target.value , 0)}/>
                           </Col><Col xs="12" md="6">
                               <label className='lable-create-course'>The Correct Choice:</label>
-                              <input title='points to enroll' type="text"   className='input-create-course' value={questions[index].choices[1].choice} onChange={(e) =>handleChoiceChange(index, 1, e.target.value , 1)}/>
-                          </Col>
+                              <input required title='points to enroll' type="text"   className='input-create-course' value={questions[index].choices[1].choice} onChange={(e) =>handleChoiceChange(index, 1, e.target.value , 1)}/>
+                          </Col></> :""}
                         </Row>
                     ))}
                     <div className='w-100 d-flex justify-content-center mt-2'>
@@ -244,7 +271,15 @@ export default  function FormDialog({courseId ,refresh , onChange}:{courseId:str
           {step === 0 ?
           <button type="submit" disabled={!video || !image || !title || !description} className='button-create-course'onClick={()=>{setStep(step+1)}}>Next</button>
           :
-          <button type="button" disabled={!questions[0].question || !questions[0].choices[0] || !questions[0].choices[1] || !questions[0].time_to_appear}  className='button-create-course' onClick={handleAddVideo}>
+          <button type="button"   className='button-create-course' onClick={(e)=>{
+            setError("");
+            e.preventDefault();
+            if (validateQuestions()) {
+              handleAddVideo(e);
+            } else {
+              setError("Please fill in all question fields before submitting.");
+            }
+          }}>
             {isPending ?"Loding..":"Create"}
           </button>
           }

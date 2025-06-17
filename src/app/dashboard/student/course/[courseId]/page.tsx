@@ -30,7 +30,7 @@ export default  function  CoursePage() {
     const [isEnrolled , setIsErolled] =useState<boolean | null> (null);
     const [message , setMessage] =useState<string>("");
     const [error , setError] =useState<string>("");
-    const {userName} = useAuth();
+    const {userName , points} = useAuth();
       const [mounted, setMounted] = useState(false);
     
         useEffect(() => {
@@ -75,6 +75,7 @@ export default  function  CoursePage() {
               setIsPending(null)
               if( response.data.success === true){
                 setMessage(response.data.message)
+                localStorage.setItem("points" , String(Number(points) - Number(courseInfo?.point_to_enroll)))
               }else{
                 setError(response.data.message)
               }

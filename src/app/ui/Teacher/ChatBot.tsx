@@ -6,9 +6,11 @@ import Chat from "../Main/Chat";
 import { useEffect, useState } from "react";
 import Axios from "@/app/lib/axios";
 import InnerChat from "./InnerChat";
+import styles from "./ChatBot.module.css";
 
 export default function ChatBot({video_id}:{video_id:string}){
         const [session , setSession] = useState<string>("")
+        const [open, setOpen] = useState(false);
     useEffect(()=>{
                 try{
                     Axios.post(`/student/create-session`,{video_id:video_id}).then(response =>{
@@ -22,15 +24,37 @@ export default function ChatBot({video_id}:{video_id:string}){
     
     return(
         <>
-            <div className="chatbot-logo-container ">
-                {/* <Image src={logo1} alt="sleep bot" className="chatbot-logo1 shadow"/> */}
-                <Image src={logo} alt="happy bot" className="chatbot-logo1 shadow"/>
+
+
+{/* الزر الثابت */}
+      <button
+        className={styles.chatButton}
+        onClick={() => setOpen(!open)}
+      >
+        💬
+      </button>
+
+      {/* الـ sidebar */}
+      <div className={`${styles.sidebar} ${open ? styles.open : ""}`}>
+        <div className={styles.header}>
+          <h3>Smart Assistant</h3>
+          <button className={styles.close_chat_button} onClick={() => setOpen(false)}>✖</button>
+        </div>
+        <div className={styles.chatContent}>
+            <InnerChat session={session}/>
+          {/* هنا يمكن وضع واجهة الشات الحقيقية */}
+        </div>
+      </div>
+
+
+
+            {/* <div className="chatbot-logo-container ">
+                <Image src={logo1} alt="sleep bot" className="chatbot-logo1 shadow"/>
             </div>
             <div className="outer-container-chatbot">
                 <div className="inner-container-chatbot shadow">
-                    <InnerChat session={session}/>
                 </div>
-            </div>
+            </div> */}
             
         </>
     )
