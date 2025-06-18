@@ -1,7 +1,11 @@
 .title_ready_courses{
-    font-size: 30px;
-    color: black;
-    font-family: cursive;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+    /* font-size: 30px; */
+    /* color: black; */
     padding-left: 2rem;
     padding-top: 1rem;
+    font-size: 1.6rem;
+  color: #1a2b4c; /* أزرق داكن */
+  margin-bottom: 1rem;
+  font-weight: 600;
 }

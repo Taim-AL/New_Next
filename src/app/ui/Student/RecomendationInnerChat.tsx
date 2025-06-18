@@ -10,7 +10,7 @@ import { Skeleton, Stack } from "@mui/material";
 
 export default function InnerChatRecomendation(){
     const bottomRef = useRef<HTMLDivElement | null>(null);
-    const [messages , setMessages] = useState<RecomendationMessages[]>([{message:"Hi User , How I can Help" , owner:0 ,courses :null}])
+    const [messages , setMessages] = useState<RecomendationMessages[]>([{message:"Hello and welcome. I am an intelligent course recommendation system designed to help you find educational programs that align with your interests and the skills you aim to develop." , owner:0 ,courses :null} , {message:"How I can Help :)" , owner:0 ,courses :null}])
     const [message , setMessage] = useState<string>("")
     const [message2 , setMessage2] = useState<string>("")
     const [isPending , setIsPending] =useState<boolean | null> (false);

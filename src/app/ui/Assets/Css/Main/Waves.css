@@ -93,5 +93,68 @@
 
 .dec_info_out{
     padding: 2rem 4rem;
+    background-color: #fff;
+}
+
+.dec_info_out1{
+    padding: 2rem 4rem;
     background-color: #f0f6ff;
+    border-radius: 16px;
+    box-shadow: 
+    0 4px 20px rgba(240, 246, 255, 0.6),   /* ظل فاتح من نفس اللون */
+    0 8px 40px rgba(0, 0, 0, 0.08); 
+  transition: box-shadow 0.3s ease; 
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.05)) drop-shadow(0 4px 12px rgba(240, 246, 255, 0.5));
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  color: #1a2b4c; /* لون النص الأساسي */
+  line-height: 1.6;
+  /* padding: 2rem; */
+    /* border: 2px solid #1F4E79;
+    border-radius: 20px; */
+}
+
+.dec_info_out1:hover{
+    box-shadow: 
+    0 6px 24px rgba(240, 246, 255, 0.8),   /* ظل أكثر بروزًا عند التحويم */
+    0 12px 48px rgba(0, 0, 0, 0.12);
+    transition: 0.3s ease;
+}
+
+.empty_free_courses{
+    display: flex;
+    padding: 0rem 1rem;
+    margin-top: 1rem;
+    /* background-color: #1F4E79; */
+    /* border: 2px solid #1F4E79; */
+    border-radius: 10px;
+}
+
+.dec_info_img{
+    width: 900px;
+    height: 450px;
+}
+
+
+.dec_info_title{
+    font-size: 2.5rem;
+  color: #1a2b4c; /* أزرق داكن */
+  margin-bottom: 1rem;
+  font-weight: 700;
+    /* font-family: Source Sans Pro,Arial,sans-serif; */
+}
+
+.dec_info_title2{
+    font-size: 1.5rem;
+  color: #36587d; /* أزرق متوسط */
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  text-align: left;
+  width: 100%;
+}
+
+.dec_info_p{
+    font-size: 1rem;
+  color: #4a5a6a; /* رمادي أزرق ناعم */
+  margin-bottom: 1rem;
+  max-width: 700px;
 }

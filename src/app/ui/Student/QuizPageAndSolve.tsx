@@ -253,6 +253,48 @@ const handleLeaveQuiz =async (event: React.MouseEvent<HTMLButtonElement>)=>{
                 </>
                     )}
 
+
+{step === 1 && !isAuto   && (
+                <>  
+                <label className='quiz_lable'>Questions :</label>
+                  <div className="outer-container-quistions">
+                    {questions.map((question,index)=>(
+                        <Row key={index} className='mx-0 quiz_info'>
+                          <Col xs="12" md="12">
+                              <label className='quiz_lable'>Question {index+1}:</label>
+                            <label className='quiz_lable'>{question.text}</label>
+                            <label className='quiz_lable'>Choices :</label>
+
+                          </Col>
+                          <Col xs="12" md="12">
+                            <RadioGroup
+                                aria-labelledby="demo-radio-buttons-group-label"
+                                value={solve[index]?.choice_id ?? ""}
+                                >
+                                    <Row className="level-container mx-0">
+                                      <Col md="12" lg="6">
+                                        <FormControlLabel required value={question.choices[0].id} onChange={e =>handleChoiceChange(question.choices[0].id , question.choices[0].question_id , index)}  control={<Radio />} label={`A : ${question.choices[0].choice}`} />
+                                      </Col>
+                                      <Col md="12" lg="6">
+                                        <FormControlLabel required value={question.choices[1].id} onChange={e =>handleChoiceChange(question.choices[1].id , question.choices[0].question_id , index)}  control={<Radio />} label={`B : ${question.choices[1].choice}`} />
+                                      </Col>
+                                      <Col md="12" lg="6">
+                                        <FormControlLabel required value={question.choices[2].id} onChange={e =>handleChoiceChange(question.choices[2].id , question.choices[0].question_id , index)}  control={<Radio />} label={`C : ${question.choices[2].choice}`} />
+                                      </Col>
+                                      <Col md="12" lg="6">
+                                        <FormControlLabel required value={question.choices[3].id} onChange={e =>handleChoiceChange(question.choices[3].id , question.choices[0].question_id , index)}  control={<Radio />} label={`D : ${question.choices[3].choice}`} />
+                                      </Col>
+                                    </Row>
+                            </RadioGroup>
+                          </Col>
+                        </Row>
+                    ))}
+                    
+                  </div>  
+                </>
+            )}
+
+
             {(step === 1 && !isAuto) || (step ===2 && isAuto  && questions && solve[0] ) && (
                 <>  
                 <label className='quiz_lable'>Questions :</label>

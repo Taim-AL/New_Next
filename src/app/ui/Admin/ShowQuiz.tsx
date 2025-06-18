@@ -4,13 +4,13 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import "@/app/ui/Assets/Css/student/QuizPage.css"
-import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import { Col, Row } from 'react-bootstrap';
 import Axios from '@/app/lib/axios';
 import IntegrationNotistack from '@/app/ui/Alert';
 import { useState } from 'react';
 import { QuestionType3 } from '@/app/lib/definitions';
 import { useRouter } from 'next/navigation';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 export default  function ShowQuizForAdmin({courseId ,quizId }:{quizId:string ,courseId:string}) {
   const [open, setOpen] = useState(true);
@@ -27,10 +27,13 @@ export default  function ShowQuizForAdmin({courseId ,quizId }:{quizId:string ,co
   const handleClose = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     setOpen(false);
-    router.push(`/dashboard/admin/courses/${courseId}`)
+    // router.push(`/dashboard/admin/courses/${courseId}`)
     setStep(0);
   };
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
 const handleLeaveQuiz =async (event: React.MouseEvent<HTMLButtonElement>)=>{
       event.preventDefault();
@@ -66,6 +69,9 @@ const handleLeaveQuiz =async (event: React.MouseEvent<HTMLButtonElement>)=>{
     <>
     {from ?
     <React.Fragment>
+      <button title="take Quiz" type="button" className="quiz_update_button " onClick={handleClickOpen}>
+          <ArrowForwardIosIcon className="icon_arrow" /> 
+      </button>
       <Dialog
         open={open}
         onClose={handleClose}

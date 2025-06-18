@@ -68,7 +68,7 @@ export default function SpecilizationPage() {
                             {courses.map((e,i)=>{
                                 return(
                                 <Col  md='6'xs='12' key={i} className="course-card-container">
-                                    <CourseCard type={0} href={`/dashboard/admin/courses/${e.id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
+                                    <CourseCard id={e.id} type={0} href={`/dashboard/admin/courses/${e.id}`} src={e.image} alt={e.name} title={e.name} about={e.description}/>
                                 </Col>
                                 )
                             })}</>

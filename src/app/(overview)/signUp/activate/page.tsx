@@ -22,7 +22,6 @@ export default function SignUp() {
 
 
     useEffect(() => {
-        console.log(user);
         if (!user?.id) {
         router.push("/signUp");
         }
@@ -42,9 +41,7 @@ export default function SignUp() {
                       }}
                     ).then(response =>{
                         const res = response.data;
-                        console.log(res)
                         if(res.success){
-                            console.log(res);
                             setPending(false);
                             setActiveCode("");
                             setMessage(res.message);
@@ -61,9 +58,7 @@ export default function SignUp() {
                       }}
                     ).then(response =>{
                         const res = response.data;
-                        console.log(res)
                         if(res.success){
-                            console.log(res);
                             setPending(false);
                             setActiveCode("");
                             setMessage(res.message);
@@ -78,13 +73,11 @@ export default function SignUp() {
         }catch(e){
             setPending(false);
             setError("Something went wrong")
-            console.log(e)
         }
     }
 
 
     const handleResendCode = async ()=>{
-        console.log(user)
         setPending(true);
         try{
             
@@ -95,9 +88,7 @@ export default function SignUp() {
                       }}
                     ).then(response =>{
                         const res = response.data;
-                        console.log(res)
                         if(res.success){
-                            console.log(res);
                             setPending(false);
                             setMessage(res.message)
                         }else{
@@ -112,9 +103,7 @@ export default function SignUp() {
                       }}
                     ).then(response =>{
                         const res = response.data;
-                        console.log(res)
                         if(res.success){
-                            console.log(res);
                             setPending(false);
                             setMessage(res.message);
                         }else{
@@ -127,7 +116,6 @@ export default function SignUp() {
         }catch(e){
             setPending(false);
             setError("Something went wrong")
-            console.log(e)
         }
     }
 

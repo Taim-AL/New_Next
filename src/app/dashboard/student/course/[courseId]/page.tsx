@@ -112,7 +112,7 @@ export default  function  CoursePage() {
     return(
         <>
         <div className="outer-container-course2">
-          <Link href={`/dashboard/teacher`} className="go_back_button">
+          <Link href={`/dashboard/student`} className="go_back_button">
             <ArrowForwardIosIcon className="go_back_icon" />
           </Link>
           <Row className="mx-0 pt-4 pb-4 h-100">

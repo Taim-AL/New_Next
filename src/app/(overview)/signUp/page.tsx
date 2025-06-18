@@ -37,15 +37,12 @@ export default function SignUp() {
         try{
             
             if(isTeacher){
-                console.log("Image",image);
                 await Axios.post('/teacher/sign-up' ,{ full_name:fullName , email:email , password:password , username:userName , gender:gender , age:age , specialization:specialization , image:image}
                     , {headers: {
                         'Content-Type': 'multipart/form-data'
                       }}
                     ).then(response =>{
                         const res = response.data;
-                        console.log(image);
-                        console.log(response);
                         if(response.data.success){
                             setUser({
                                 id:res.data.id,
@@ -57,7 +54,6 @@ export default function SignUp() {
                                 points:null
                               });
                               
-                            console.log(user);
                             setPending(false);
                             setUserName("");
                             setEmail("");
@@ -77,7 +73,6 @@ export default function SignUp() {
                       }}
                     ).then(response =>{
                         const res = response.data.data;
-                        console.log(res)
                         if(response.data.success){
                             setUser({
                                 id:res.id,
@@ -89,7 +84,6 @@ export default function SignUp() {
                                 points:res.points
                               });
                               
-                            console.log(user);
                             setPending(false);
                             setUserName("");
                             setEmail("");
@@ -107,7 +101,6 @@ export default function SignUp() {
         }catch(e : any){
             setPending(false);
             setError(e.data.message)
-            console.log('Caught error:', e); 
         }
     }
 

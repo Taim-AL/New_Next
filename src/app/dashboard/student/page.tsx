@@ -8,8 +8,8 @@ export default function StudentPage() {
 
   return (
     <>
-      <Courses/>
       <RecomendationSystem/>
+      <Courses/>
     </>
   )
 }

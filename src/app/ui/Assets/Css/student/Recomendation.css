@@ -1,10 +1,6 @@
 .outer_container_recomendation {
     width: 100%;
-    height: 60vh;
-    background-image: url('../wallpaper3-100.jpg'); /* غيّر المسار حسب مكان الصورة */
-    background-size: cover;
-    background-position: left center; /* لضمان أن البوصلة تبقى في اليسار */
-    background-repeat: no-repeat;
+    
     position: relative;
     overflow: hidden;
     z-index: 1;

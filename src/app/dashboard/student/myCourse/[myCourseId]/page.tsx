@@ -69,7 +69,7 @@ export default  function  CoursePage() {
     return(
         <>
         <div className="outer-container-course2">
-                  <Link href={`/dashboard/teacher`} className="go_back_button">
+                  <Link href={`/dashboard/student`} className="go_back_button">
                     <ArrowForwardIosIcon className="go_back_icon" />
                   </Link>
                   <Row className="mx-0 pt-4 pb-4 h-100">
@@ -78,7 +78,7 @@ export default  function  CoursePage() {
                       <h2 className="course2_title_h2"> {courseInfo ? courseInfo.name :""}</h2> 
                       <p>This course belongs to the category <span className="category_span">{category ? category:""}</span></p>
                       {mounted ?<div className="d-flex align-items-center"><Avatar className="instructor_avatar" alt={String(userName)} /><p className="mt-3">Instructor : <span className="category_span">{userName}</span></p></div> : ""}
-                      <div style={{marginLeft:"3rem"}}><h2 className="course2_info_title ">Your Progress  </h2>{progress ?<HTMLContent myCount={progress}/>:""}</div>
+                      {progress ?<div style={{marginLeft:"3rem"}}><h2 className="course2_info_title ">Your Progress  </h2><HTMLContent myCount={progress}/></div>:""}
                     </Col>
                     <Col lg="6" md="12" xs="12">
                         {courseInfo?.image ?<Image alt="image" className='course2_image'width={100} height={15} priority={true} src={courseInfo?.image} />:""} 

@@ -28,13 +28,11 @@ export default function CategoriesPage() {
 useEffect(() => {
   try{
           Axios.get(`/admin/categories`, {params :{page:currentPage1}}).then(response =>{
-            console.log("categories :",response)
             if(response.data.success){
               setTotalPages1(response.data.meta.last_page); 
               setCategories(response.data.data)
               }
         })}catch(error){
-          console.log(error)
         }
   }, [currentPage1 , refresh1]);
 
@@ -42,12 +40,10 @@ useEffect(() => {
 useEffect(() => {
   try{
           Axios.get(`/admin/get-all-category`).then(response =>{
-            // console.log("categories :",response)
             if(response.data.success){
               setAllCategories(response.data.data)
               }
         })}catch(error){
-          console.log(error)
         }
   }, [currentPage1 , refresh1]);
 
@@ -55,13 +51,11 @@ useEffect(() => {
   useEffect(() => {
   try{
           Axios.get(`/admin/skills`, {params :{page:currentPage2}}).then(response =>{
-            console.log("skills :",response)
             if(response.data.success){
               setTotalPages2(response.data.meta.last_page); 
               setSkills(response.data.data)
               }
         })}catch(error){
-          console.log(error)
         }
   }, [currentPage2 , refresh2]);
 

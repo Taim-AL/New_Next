@@ -46,7 +46,6 @@ export default  function  CoursePage() {
       setMessage("")
     try{
     const response = await Axios.post(`admin/publish-course/${courseId}`)
-            console.log( "response Accept :",response)
             setIsPending(null)
             if( response.data.success === true){
               setMessage(response.data.message)
@@ -56,7 +55,6 @@ export default  function  CoursePage() {
             }
   
         }catch(e : any){
-          console.log(e)
           setIsPending(null)
           setError(e.data.message)
         }
@@ -66,7 +64,6 @@ export default  function  CoursePage() {
   useEffect(()=>{
       try{
           Axios.get(`/admin/courses/${courseId}/preview`).then(response =>{
-              console.log("Course Details :",response)
               if(response.data.success === true){
                 setAquirements(response.data.data.aquirements)
                 setRequirements(response.data.data.requirements)
@@ -77,7 +74,6 @@ export default  function  CoursePage() {
                 setImage(response.data.data.course.image)
               }
           })}catch(error){
-          console.log(error)
           }
       },[])
 

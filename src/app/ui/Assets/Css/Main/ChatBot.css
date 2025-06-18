@@ -1,10 +1,9 @@
 .outer-container-chatbot {
-    width: 100%;
-    height: 60vh;
-    background-image: url('../wallpaper3-100.jpg'); /* غيّر المسار حسب مكان الصورة */
-    background-size: cover;
-    background-position: left center; /* لضمان أن البوصلة تبقى في اليسار */
-    background-repeat: no-repeat;
+    
+    /* background-image: url('../wallpaper3-100.jpg'); /* غيّر المسار حسب مكان الصورة */
+    /* background-size: cover;
+    background-position: left center;
+    background-repeat: no-repeat;  */
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -209,4 +208,26 @@
     .Recomended_course{
       background-color: #fff; 
       transition: 0.3s;
+    }
+
+    .chatbot_info_outer{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .chatbot_info_inner{
+      padding: 2rem ;
+    background-color: #f0f6ff;
+    border-radius: 16px;
+    box-shadow: 
+    0 4px 20px rgba(240, 246, 255, 0.6),   /* ظل فاتح من نفس اللون */
+    0 8px 40px rgba(0, 0, 0, 0.08); 
+  transition: box-shadow 0.3s ease; 
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.05)) drop-shadow(0 4px 12px rgba(240, 246, 255, 0.5));
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  color: #1a2b4c; /* لون النص الأساسي */
+  line-height: 1.6;
     }

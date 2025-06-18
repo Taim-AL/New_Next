@@ -30,3 +30,17 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
       totalPages,
     ];
   };
+
+
+export function cleanTranscript(text: string): string {
+  // تقسيم النص إلى مقاطع بناءً على time stamp
+  const parts = text.split(/\[\d{2}:\d{2}:\d{2,3}(?:\.\d{1,3})?\]/);
+
+  // تنظيف كل جزء من الفراغات الزائدة وإزالة الفراغات الفارغة
+  const cleaned = parts
+    .map(part => part.trim())
+    .filter(part => part.length > 0); // إزالة المقاطع الفارغة
+
+  // إعادة تجميعها كسطور منفصلة
+  return cleaned.join('\n');
+}

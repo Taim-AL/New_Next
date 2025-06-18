@@ -34,7 +34,6 @@ function page() {
                         headers: { 'Content-Type': 'application/json' }
                     }
                 ).then(response => {
-                    console.log("admin login :" ,response)
                     if (response.data.success === true) {
                         const accessToken = response?.data?.data?.token;
                         localStorage.setItem('id' , response?.data?.data?.id);
@@ -63,7 +62,6 @@ function page() {
             } catch (e) {
             setPending(false);
             setError("Something went wrong")
-            console.log(e)
         }
 }
 

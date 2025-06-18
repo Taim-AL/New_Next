@@ -85,7 +85,7 @@ export type SnackBarType = {
   }
   
 
-  export type OuterCourseType = {
+  export type   OuterCourseType = {
     category_id:number;
     course_id:number;
     image : StaticImageData;

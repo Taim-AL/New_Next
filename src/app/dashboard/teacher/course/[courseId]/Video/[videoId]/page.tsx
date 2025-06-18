@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useAuth } from "@/app/context/auth-context";
 import { Skeleton, Stack } from "@mui/material";
 import { Col, Row } from "react-bootstrap";
+import { cleanTranscript } from "@/app/lib/utils";
 
 export default function VideoPage() {
     const params = useParams();
@@ -23,6 +24,7 @@ export default function VideoPage() {
     const [currentQuestion, setCurrentQuestion] = useState<QuestionVideoResponse | null>(null);
     const [answeredTimes, setAnsweredTimes] = useState<number[]>([]);
     const [selectedLang, setSelectedLang] = useState("en"); // اللغة الافتراضية
+        const [selectedLangSub, setSelectedLangSub] = useState("en"); // اللغة الافتراضية
     const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
     const [scripts , setScripts] = useState<{language: string ; script_path : string} []| null>(null)
     const currentQuestionRef = useRef<QuestionVideoResponse | null>(null);
@@ -212,7 +214,13 @@ export default function VideoPage() {
                 if(response.data.success === true){
                   console.log(response)
                   setResponseVideo(response.data.data);
-                  setScripts(response.data.data.scripts);
+                  const data: { language: string; script_path: string }[] =response.data.data.scripts;
+                  const cleanedData = data.map(script => ({
+                    ...script,
+                    script_path: cleanTranscript(script.script_path),
+                  }));
+                  setScripts(cleanedData);
+                  // setScripts(response.data.data.scripts);
                   setRealAudioSrc(response.data.data.audios[0].path)
 
                   const parseLangFromUrl = (url: string): string | null => {
@@ -232,30 +240,6 @@ export default function VideoPage() {
             }
         },[])
 
-    // useEffect(()=>{
-    //       try{
-    //           Axios.get(`teacher/get-video-audio/${videoId}`).then(response =>{
-    //               if(response.data.success === true){
-    //                 const parseLangFromUrl = (url: string): string | null => {
-    //                 const match = url.match(/_([a-z]{2})\.mp3$/);
-    //                 return match ? match[1] : null;
-    //               };
-
-    //               const parsedAudios = response.data.meta.audios.map((url : {created_at: string ; id: number; path: string}) => {
-    //                 const lang = parseLangFromUrl(url.path);
-    //                 return lang ? { src: url, lang } : null;
-    //               }).filter(Boolean) as { src: string; lang: string }[];
-
-    //               setAudios(parsedAudios);
-
-    //                 console.log("الدوبلاج :",response)
-    //                 console.log("الدوبلاج 2:",audios)
-    //               }
-    //             })}catch(error){
-    //           console.log(error)
-    //           }
-    //       },[])
-
 
         useEffect(()=>{
           console.log("الدوبلاج 2:",audioSrc3)
@@ -271,23 +255,23 @@ export default function VideoPage() {
 
 
         useEffect(() => {
-        async function fetchSubtitle() {
-          try {
-            const res = await Axios.get(`teacher/get-subtitles/${videoId}/${selectedLang}`);
-            console.log("subTitle Res :" , res.data)
-            // if (!res.ok) throw new Error("فشل تحميل الترجمة");
-
-            const blob =new Blob([res.data], { type: 'text/vtt' });
-            const blobUrl = URL.createObjectURL(blob);
-            setSubtitleUrl(blobUrl); // تخزن رابط blob مؤقت
-            console.log(subtitleUrl)
-          } catch (error) {
-            console.error("خطأ في تحميل الترجمة:", error);
-          }
-        }
-
-        fetchSubtitle();
-      }, [selectedLang]);
+                async function fetchSubtitle() {
+                  try {
+                    const res = await Axios.get(`teacher/get-subtitles/${videoId}/${selectedLangSub}`);
+                    console.log("subTitle Res :" , res.data)
+                    // if (!res.ok) throw new Error("فشل تحميل الترجمة");
+        
+                    const blob =new Blob([res.data], { type: 'text/vtt' });
+                    const blobUrl = URL.createObjectURL(blob);
+                    setSubtitleUrl(blobUrl); // تخزن رابط blob مؤقت
+                    console.log(subtitleUrl)
+                  } catch (error) {
+                    console.error("خطأ في تحميل الترجمة:", error);
+                  }
+                }
+        
+                fetchSubtitle();
+              }, [selectedLangSub]);
 
 
 
@@ -316,9 +300,9 @@ export default function VideoPage() {
            className="video_player"
            >
               <track
-                label="Arabic"
+                label={selectedLangSub}
               kind="subtitles"
-              srcLang="ar"
+              srcLang={selectedLangSub}
               src={subtitleUrl? subtitleUrl :"bla bla "}
                 className="subtitles_container"
                 default
@@ -328,31 +312,60 @@ export default function VideoPage() {
         </div>
       </div>
 <audio ref={audioRef} src={audioSrc3 ? audioSrc3 : String(RealAudioSrc)} />
-      <div className="d-flex justify-content-center align-items-center w-100 ">
-      <select title="lang" className="custom-select" onChange={(e) => setSelectedLang(e.target.value)} value={selectedLang}>
-            <option value="ar">العربية</option>
-            <option value="en">English</option>
-            <option value="fr">French</option>
-        </select>
-      </div>
-
-      <div style={{padding:"5rem"}}>
-        <Row className="mx-0">
-          {scripts ?
-          scripts.map((e,i)=>{
-        return(
-          <Col lg="6" md="12" key={i} className="p-2 d-flex align-items-stretch  mt-3">
-            <div className="scripts_container shadow">
-            <h5>{e.language === "ar" ?"النص العربي ":e.language === "en" || e.language === "English" ? "the English text" : "le texte français"}</h5>
-            <p>{e.script_path}</p>
+      <div style={{padding:"1rem 5rem"}}>
+              <Row className="mx-0">
+                <Col lg="4"></Col>
+                <Col lg="4">
+                <div className="scripts_container shadow">
+                      <div className="d-flex justify-content-center align-items-center w-100 mt-3">
+                        <p className="dec_info_p mt-3 " style={{marginRight:"0.5rem"}}>SubTitle :  </p>
+                        <select title="lang" className="custom-select" onChange={(e) => setSelectedLangSub(e.target.value)} value={selectedLangSub}>
+                              <option value="ar">العربية</option>
+                              <option value="en">English</option>
+                              <option value="fr">French</option>
+                          </select>
+                        </div>
+                        <div className="d-flex justify-content-center align-items-center w-100 mt-3">
+                        <p className="dec_info_p mt-3 " style={{marginRight:"0.5rem"}}>Dubbing :  </p>
+                        <select title="lang" className="custom-select" onChange={(e) => setSelectedLang(e.target.value)} value={selectedLang}>
+                              <option value="ar">العربية</option>
+                              <option value="en">English</option>
+                              <option value="fr">French</option>
+                          </select> 
+                        </div>
+                        </div>
+                </Col>
+                <Col lg="4"></Col>
+      
+                </Row>
+                </div>
+      
+            <div style={{padding:"0rem 5rem"}}>
+              <Row className="mx-0">
+                      <Col lg="3"   className="p-2 d-flex justify-content-end  align-items-stretch mt-3"></Col>
+                {scripts
+                ? scripts
+                    .filter(e => e.language === selectedLang)
+                    .map((e, i) => (
+                      <Col lg="6"  key={i} className="p-2 d-flex align-items-stretch mt-3">
+                        <div className="scripts_container reale_one shadow " >
+                          <h5>
+                            {e.language === "ar"
+                              ? "النص العربي"
+                              : e.language === "en" || e.language === "English"
+                              ? "The English Text"
+                              : "Le texte français"}
+                          </h5>
+                          <p>{e.script_path}</p>
+                        </div>
+                      </Col>
+                    ))
+                : ""}
+      
+                      <Col lg="3"   className="p-2 d-flex justify-content-end  align-items-stretch mt-3"></Col>
+      
+              </Row>
             </div>
-          </Col>
-        )
-          })
-          :""}
-          
-        </Row>
-      </div>
 
       {currentQuestion && (
   <div className="question-overlay">

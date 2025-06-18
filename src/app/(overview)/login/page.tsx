@@ -36,7 +36,6 @@ function Login() {
                         headers: { 'Content-Type': 'application/json' }
                     }
                 ).then(response => {
-                    console.log( "response login :",response)
                     if (response.data.success === true) {
                         setMessage(response.data.message)
                         const accessToken = response.data.data.token;
@@ -72,7 +71,6 @@ function Login() {
                         headers: { 'Content-Type': 'application/json' }
                     }
                 ).then(response => {
-                    console.log(response)
                     if (response.data.success === true) {
                         const accessToken = response?.data?.data?.token;
                         localStorage.setItem('id' , response?.data?.data?.id);
@@ -104,7 +102,6 @@ function Login() {
         } catch (e) {
             setPending(false);
             setError("Something went wrong")
-            console.log(e)
         }
 }
 

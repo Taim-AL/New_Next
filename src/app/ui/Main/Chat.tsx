@@ -7,15 +7,12 @@ export default function Chat(){
         <>
             <div className="chat-box">
                 <div className="messages">
-                    <div className="message bot">Hi User , How I can Help</div>
-                    <div className="message user">pleas help me in math , and english  </div>
-                    <div className="message bot">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, ipsum? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate doloribus nihil sit similique quo velit, officiis nulla asperiores est.</div>
-                    <div className="message user">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum iusto nihil possimus iste distinctio nesciunt, aspernatur, laboriosam, veniam porro earum dignissimos adipisci dolorem! Fugit beatae adipisci nemo reiciendis, ipsam architecto?</div>
-                    <div className="message bot">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde, minima.</div>
+                    <div className="message bot">Hello and welcome. I am an intelligent course recommendation system designed to help you find educational programs that align with your interests and the skills you aim to develop.</div>
+                    <div className="message bot">How I can Help :)</div>
                 </div>
                 <div className="input-area">
                     <input 
-                        placeholder="Your quistion here..." 
+                        placeholder="Your interest ...." 
                         className='input-search'
                     />
                     <Link href={"/login"} className="send_chat_button" title="send">
